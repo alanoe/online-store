@@ -40,39 +40,49 @@ Ao entrar na aplicação, o usuário (qualquer tipo de usuário) entra nessa tel
 
 #### Versão Customer
 
-**Tela de cadastro**
+**Tela de cadastro**         
+
 O usuário fará seu cadastro com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
 
-**Tela de informações pessoais (ícone de perfil)**
+**Tela de informações pessoais (ícone de perfil)**         
+
 O usuário pode verificar seus dados e atualizar os mesmos.
 
-**Tela de produtos**
+**Tela de produtos**         
+
 O usuário, ao efetuar o login será direcionado a essa tela, aonde poderá navegar pelos produtos cadastrados no site (ao clicar em um produto, será direcionado para a página dele), o ícone de perfil (para atualizar o mesmo) e o carrinho para ver o que está nele.
 
-**Página do produto**
+**Página do produto**         
+
 Aqui o usuário poderá ver as fotos, a descrição, o preço, a quantidade e o valor do produto para a compra.
 Também há as informações da mãe do ovo para mostrar a origem do ovo, estilo aos bois Wagyu.
 Existe o link do carrinho presente nesta página também.
 
-**Carrinho**
+**Carrinho**         
+
 O usuário verá os produtos selecionados mostrando uma foto, a quantidade e valor de cada produto, com a soma total no fim.
 
-**Página de pagamento**
+**Página de pagamento**         
+
 Ao colocar em finalizar no carrinho, o usuário vem para a página de pagamento aonde preencherá com seus dados, incluindo o cartão de crédito (qualquer número), para realizar o pagamento.
 E ao realizar o pagamento aparece o pop-up de comprovação de pagamento.
 
 #### Versão Administrador
 
-**Tela de cadastro**
+**Tela de cadastro**         
+
 O usuário fará seu cadastro, a partir de um e-email recebido, com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
 
-**Tela de informações pessoais (ícone de perfil)**
+**Tela de informações pessoais (ícone de perfil)**         
+
 O usuário pode verificar seus dados e atualizar os mesmos.
 
-**Tela de produtos**
+**Tela de produtos**         
+
 O usuário verá os produtos cadastrados no seu site, igual ao consumidor mas terá a opção de editar o que é mostrado clicando no ícone de lápis, o qual substituiu o ícone de carrinho.
 
-**Tela de relatório de vendas**
+**Tela de relatório de vendas**         
+
 É mostrado para cada produto vendido, sua quantidade, seu valor unitário e seu valor total vendido.
 Também informa o total de todas as vendas e a quantidade de usuários que compraram.
 
