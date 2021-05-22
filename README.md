@@ -28,6 +28,16 @@ O sistema é um site cujo objetivo é a venda de ovos de vários tipos, desde o 
 
 Uma plataforma de vendas online implementada em HTML5 e CSS3
 
+### Armazenagem de dados
+
+Serão armazenadas na base de dados as informações de usuários e produtos.
+
+### Regiões da aplicação
+
+
+
+### Diagrama de Navegação
+
 ![Diagrama de Navegação](img/DiagramaNavegacaoWebMk2.png)
 
 ## Comentários sobre o código
