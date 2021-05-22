@@ -1,7 +1,7 @@
-Alan Vitor de Oliveira Evangelista, 3672451
-Bruno Fernandes Moreira, 11218712
-Luis Felipe Jorge, 10310589
-Sávio Duarte Fontes, 10737251
+Alan Vitor de Oliveira Evangelista, 3672451         
+Bruno Fernandes Moreira, 11218712         
+Luis Felipe Jorge, 10310589         
+Sávio Duarte Fontes, 10737251         
 
 Projeto para matéria de Introdução ao Desenvolvimento Web (SCC0219) para o curso de Ciências de Computação da USP São Carlos.
 
