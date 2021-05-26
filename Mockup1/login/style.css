@@ -1,0 +1,98 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: row;
+}
+
+.descricao {
+  flex:1;
+}
+
+#img-ovo-branco {
+  width: 50%;
+  height: 70%;
+  margin: 0 20%;
+}
+
+
+input[type=submit] {
+  background-color: #1B1818;
+  color: #ffffff;
+  border: none;
+  width: 60%;
+  font-weight: bold;
+}
+
+#link-cadastro {
+  color: #DFE22F;
+  text-decoration: none;
+  
+}
+
+
+#link-lista {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.link-pags {
+  margin-right: 5%;
+  font-weight:400;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.login-card{
+  flex: 1;
+  margin-left: 5%;
+
+}
+
+.login-form {
+  display: flex;
+  border: 0.8em solid #1B1818;
+  padding: 1%;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  width: 70%;
+  margin: 0;
+}
+
+.login-titulo{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 700;
+  width: 70%;
+}
+
+.nav-bar {
+  background-color: #1B1818;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #DFE22F;
+  padding: 1%;
+}
+
+
+#titulo-granja {
+  margin-left: 5%;
+}
+
+.row {
+  width: 100%;
+  flex-direction: row;
+}
