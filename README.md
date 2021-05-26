@@ -7,84 +7,96 @@ Projeto para matéria de Introdução ao Desenvolvimento Web (SCC0219) para o cu
 
 # Granja dos Desesperados
 
-O sistema é um site cujo objetivo é a venda de ovos de vários tipos, desde o ovo de galinha comum até os ovos mais raros, incluindo, talvez, ovos de unicórnios e alienígenas. Ao selecionar o tipo de ovo, o usuário terá acesso aos dados da mãe estilo aos cortes WAGYU de carne bovina.
+O sistema é um site cujo objetivo é a venda de ovos de vários tipos, desde o ovo de galinha comum até os ovos mais raros, como de unicórnios e alienígenas
 
 ## Requisitos
 
 - O sistema deve acomodar dois tipos de usuários: clientes e administradores;
     - Os administradores são responsáveis por registrar e gerenciar administradores, clientes e produtos. A aplicação deve começar com uma conta *admin* com senha *admin*;
     - Os clientes são usuários que acessam o sistema para comprar produtos;
-- O sistema deve permitir que um administrador cadastre outro. As informações armazenadas sobre um administrador são: *nome*, *telefone*, *e-mail*, *senha*, e um *id* que não fica amostra do usuário;
-- O sistema deve permitir que um cliente se cadastre no mesmo. As informações armazenadas sobre um cliente são: *nome*, *endereço*, *telefone*, *e-mail*, *senha*, e um *id* que não fica amostra do usuário;
-- O sistema deve permitir que o administrador cadastre, consulte, atualize e remova produtos. As informações armazenadas sobre um produto são: *id*, *nome*, *foto*, *descrição*, *preço*, *quantidade em estoque* e *quantidade vendida* (somente para o administrador). O sistema possui um tipo de produto: *o ovo*, porém ele pode ser de diversos tipos;
+- O sistema deve permitir que um administrador cadastre outro. As informações armazenadas sobre um administrador são: nome, telefone, e-mail, senha, e um ID, que não é visível ao usuário;
+- O sistema deve permitir que um cliente se cadastre no mesmo. As informações armazenadas sobre um cliente são: nome, endereço, telefone, e-mail, senha, e um ID, que não é visível ao usuário;
+- O sistema deve permitir que o administrador cadastre, consulte, atualize e remova produtos. As informações armazenadas sobre um produto são: ID, nome, foto, descrição, preço, quantidade em estoque e quantidade vendida (informação disponível somente para o administrador). O sistema possui um tipo de produto: *o ovo*, que pode ser de diversos tipos;
     - Cada *ovo* tem sua descrição, preço e quantidade associados, além de conter a descrição da mãe.
 - O sistema deve permitir a venda dos produtos. Para cada produto vendido, a *quantidade vendida* deve ser incrementada e *quantidade em estoque* decrementada conforme a quantidade vendida. Uma venda não pode ser realizada caso não haja a quantidade em estoque necessária;
-- O sistema deve conter um carrinho, no qual os produtos selecionados estarão listados com as informações de *nome*, *foto*, *preço* e quantidade selecionada. Além disso, deve ser mostrado o preço total associado a todos os itens. Os carrinhos serão limpos apenas no pagamento ou pelos clientes;
-- A venda deve ser paga com um cartão de crédito (qualquer número é aceito pelo sistema);
-- [?] O sistema deve permitir a listagem das compras realizadas pelo usuário (Futura implementação);
-- O sistema deve fornecer requisitos de acessibilidade e fornecer boa usabilidade. O sistema deve ser responsivo.
+- O sistema deve prover a abstração de um carrinho de compras, que contém os produtos selecionados pelo usuário para serem comprados.
+O usuário poderá listar os produtos nesse carrinho, assim como adicionar e remover produtos. A lista de produtos no carrinho contém o nome, foto, preço e quantidade selecionada de cada produto. Além disso, deve ser mostrado o preço total associado a todos os itens. Os carrinhos serão limpos apenas quando a compra for concluída ou quando o usuário requisitá-lo;
+- A compra pode ser paga com cartão de crédito (qualquer número é aceito pelo sistema), boleto ou pix;
+- O sistema deve permitir o histórico de compras realizadas pelo usuário (futura implementação);
+- O sistema deve atender requisitos de acessibilidade e fornecer boa usabilidade. O sistema deve ser responsivo.
 
 ## Descrição do Projeto
 
-Uma plataforma de vendas online implementada em HTML5 e CSS3
+O lado do cliente da aplicação será implementado em HTML5, CSS3 e Javascript. Ainda resta definir que tecnologia será empregada
+no lado do servidor (Node.JS + Express, Python + Django ou Ruby + Ruby on Rails).
 
 ### Armazenagem de dados
 
-Serão armazenadas na base de dados as informações de usuários e produtos.
+Os dados de usuários e produtos serão armazenadas em um banco de dados relacional PostegreSQL.
 
-### Regiões da aplicação
+### Áreas da aplicação
 
-**Tela de Login (tela inicial)**
-Ao entrar na aplicação, o usuário (qualquer tipo de usuário) entra nessa tela para realizar o login utilizando e-mail e senha.
+**Tela de Login**
+Ao entrar na aplicação, o usuário o entra nessa tela para realizar o login utilizando e-mail e senha.
 (Usuário Customer) Caso ainda não tenha conta, ele pode clicar no *Cadastrar* do Header para criar seu cadastro.
 
-#### Versão Customer
+#### Área de cliente
+
+Essa área é accesível pelos clientes e pelos administradores.
 
 **Tela de cadastro**         
 
-O usuário fará seu cadastro com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
+O usuário poderá fazer seu cadastro com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
 
 **Tela de informações pessoais (ícone de perfil)**         
 
-O usuário pode verificar seus dados e atualizar os mesmos.
+O usuário poderá verificar seus dados e atualizar os mesmos.
 
 **Tela de produtos**         
 
-O usuário, ao efetuar o login será direcionado a essa tela, aonde poderá navegar pelos produtos cadastrados no site (ao clicar em um produto, será direcionado para a página dele), o ícone de perfil (para atualizar o mesmo) e o carrinho para ver o que está nele.
+Tela inicial da aplicação na qual o usuário poderá navegar pelos produtos cadastrados no site e obter mais produtos
+de um produto específico ao clicar nele. O usuário também poderá clicar em um link para fazer login e será automaticamente
+redirecionado para o mesmo se tentar comprar algum produto. A partir dessa tela o usuário pode ir para seu perfil, caso
+já tenha feito o login.
 
 **Página do produto**         
 
 Aqui o usuário poderá ver as fotos, a descrição, o preço, a quantidade e o valor do produto para a compra.
-Também há as informações da mãe do ovo para mostrar a origem do ovo, estilo aos bois Wagyu.
-Existe o link do carrinho presente nesta página também.
+O link do carrinho está disponível nesta página também.
 
 **Carrinho**         
 
-O usuário verá os produtos selecionados mostrando uma foto, a quantidade e valor de cada produto, com a soma total no fim.
+O usuário verá os produtos adicionados ao carrinho até esse momento. Para cada produto, a aplicação mostrará seu nome,
+sua foto, a quantidade escolhida pelo usuário e o seu valor. Também será mostrada a soma total da compra no fim da página.
 
 **Página de pagamento**         
 
-Ao colocar em finalizar no carrinho, o usuário vem para a página de pagamento aonde preencherá com seus dados, incluindo o cartão de crédito (qualquer número), para realizar o pagamento.
-E ao realizar o pagamento aparece o pop-up de comprovação de pagamento.
+Ao colocar em finalizar no carrinho, o usuário é direcionado para a página de pagamento, onde preencherá os dados da compra,
+que pode ser feita por cartão de crédito, boleto ou pix. O usuário poderá comprar à vista ou parcelar a compra em até 12
+vezes sem juros. Após fornecer seus dados, o usuário verá um pop-up de comprovação de pagamento e, caso confirme, a compra
+será finalizada. Um email de confirmação com os dados da compra será enviado para o usuário.
 
-#### Versão Administrador
+#### Área administrativa
 
-**Tela de cadastro**         
+Apenas administradores podem acessar essa área.
 
-O usuário fará seu cadastro, a partir de um e-email recebido, com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
+**Tela de cadastro de administrador**         
 
-**Tela de informações pessoais (ícone de perfil)**         
+O super administrador poderá cadastrar outros administradores.
 
-O usuário pode verificar seus dados e atualizar os mesmos.
+**Tela de cadastro de usuário**         
+
+Um administrador poderá cadastrar usuários, fornecendo os dados de usuário já mencionados anteriormente.
 
 **Tela de produtos**         
 
-O usuário verá os produtos cadastrados no seu site, igual ao consumidor mas terá a opção de editar o que é mostrado clicando no ícone de lápis, o qual substituiu o ícone de carrinho.
+Um administrador poderá ver os produtos cadastrados no seu site. A interface é quase idêntica à vista pelo usuário,
+mas o administrador terá a opção de editar o que é mostrado clicando em um ícone de lápis.
 
 **Tela de relatório de vendas**         
 
-É mostrado para cada produto vendido, sua quantidade, seu valor unitário e seu valor total vendido.
-Também informa o total de todas as vendas e a quantidade de usuários que compraram.
+É mostrado, para cada produto vendido, sua quantidade em estoque, seu valor unitário e seu valor total vendido.
+Também será informado a quantia total de vendas, o valor médio da compra e a quantidade total de compras.
 
 ### Diagrama de Navegação
 

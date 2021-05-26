@@ -1,0 +1,78 @@
+/* universal reset */
+* {
+  font-family: 'Poppins', sans-serif;
+  /* use zero margin and padding instead of browser defaults */
+  margin: 0;
+  padding: 0;
+  /* set box width and height to element's content + padding + border instead of CSS' default box model sizing in which
+     box width and height are related only to the element's content because the former is more intuitive
+     See https://css-tricks.com/almanac/properties/b/box-sizing/ */
+  box-sizing: border-box;
+}
+/* reset box sizing for pseudo elements */
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+#barra-nav {
+  background-color: #1B1818;
+  color: #DFE22F;
+
+  padding: 1%;
+  /* flex container properties*/
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#logo {
+  width: 15%;
+  height: 15%;
+}
+
+#login-container {
+  /* flex container properties */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-titulo {
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+#login-form {
+  border: 0.8em solid #1B1818;
+  padding: 1%;
+
+  /* flex container properties */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+#login-form label, #login-form input {
+  display: block;
+  width: 100%;
+}
+
+input[type=submit] {
+  margin-top: 5%;
+  background-color: #1B1818;
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+}
+
+#oferta-cadastro {
+  margin-top: 2%;
+  display: block;
+}
+
+#link-cadastro{
+  display: block;
+}

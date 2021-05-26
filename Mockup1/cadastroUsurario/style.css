@@ -1,0 +1,109 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.descricao {
+  flex:1;
+}
+
+input[type=submit] {
+  background-color: #1B1818;
+  color: #ffffff;
+  border: none;
+  width: 60%;
+  font-weight: bold;
+}
+
+#link-home, #link-logout {
+  color: #DFE22F;
+  text-decoration: none;
+  
+}
+
+#link-lista li {
+  list-style-type: none;
+  padding-inline-start: 0;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-pags {
+  margin-right: 5%;
+  font-weight:400;
+}
+
+.cadastro-usuario {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+.cadastro-usuario-card{
+  flex: 1;
+  margin-left: 5%;
+  width: 100%;
+}
+
+form {
+  display: table;
+  padding-left: 12%;
+}
+
+label {
+  display: table-cell;
+
+}
+
+input {
+  display: table-cell;
+
+  margin-left: 0em;
+}
+
+.cadastro-form {
+  display: flex;
+  padding: 1%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  width: 70%;
+  margin: 0;
+}
+
+.cadastro-titulo{
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 700;
+  width: 70%;
+}
+
+.nav-bar {
+  background-color: #1B1818;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #DFE22F;
+  padding: 1%;
+}
+
+#titulo-granja {
+  margin-left: 5%;
+}
+
+#img-user {
+  width: 20%;
+}
