@@ -1,7 +1,7 @@
-Alan Vitor de Oliveira Evangelista, 3672451         
-Bruno Fernandes Moreira, 11218712         
-Luis Felipe Jorge, 10310589         
-Sávio Duarte Fontes, 10737251         
+Alan Vitor de Oliveira Evangelista, 3672451
+Bruno Fernandes Moreira, 11218712
+Luis Felipe Jorge, 10310589
+Sávio Duarte Fontes, 10737251
 
 Projeto para matéria de Introdução ao Desenvolvimento Web (SCC0219) para o curso de Ciências de Computação da USP São Carlos.
 
@@ -44,56 +44,63 @@ Ao entrar na aplicação, o usuário o entra nessa tela para realizar o login ut
 
 Essa área é accesível pelos clientes e pelos administradores.
 
-**Tela de cadastro**         
+**Tela de cadastro**
 
 O usuário poderá fazer seu cadastro com seus dados (*nome*, *endereço*, *telefone*, *e-mail*, *senha*).
 
-**Tela de informações pessoais (ícone de perfil)**         
+**Tela de informações pessoais (ícone de perfil)**
 
 O usuário poderá verificar seus dados e atualizar os mesmos.
 
-**Tela de produtos**         
+**Tela de produtos**
 
 Tela inicial da aplicação na qual o usuário poderá navegar pelos produtos cadastrados no site e obter mais produtos
 de um produto específico ao clicar nele. O usuário também poderá clicar em um link para fazer login e será automaticamente
 redirecionado para o mesmo se tentar comprar algum produto. A partir dessa tela o usuário pode ir para seu perfil, caso
 já tenha feito o login.
 
-**Página do produto**         
+**Página do produto**
 
 Aqui o usuário poderá ver as fotos, a descrição, o preço, a quantidade e o valor do produto para a compra.
-O link do carrinho está disponível nesta página também.
+O link do carrinho está disponível nesta página também. É possível ordenar os produtos por menor preço, pelos mais vendidos
+ou pelos mais bem avaliados.
 
-**Carrinho**         
+**Carrinho**
 
 O usuário verá os produtos adicionados ao carrinho até esse momento. Para cada produto, a aplicação mostrará seu nome,
 sua foto, a quantidade escolhida pelo usuário e o seu valor. Também será mostrada a soma total da compra no fim da página.
 
-**Página de pagamento**         
+**Página de pagamento**
 
 Ao colocar em finalizar no carrinho, o usuário é direcionado para a página de pagamento, onde preencherá os dados da compra,
 que pode ser feita por cartão de crédito, boleto ou pix. O usuário poderá comprar à vista ou parcelar a compra em até 12
 vezes sem juros. Após fornecer seus dados, o usuário verá um pop-up de comprovação de pagamento e, caso confirme, a compra
 será finalizada. Um email de confirmação com os dados da compra será enviado para o usuário.
 
+**Página de avaliação do produto**
+
+Quando o site receber uma notificação da transportadora que o produto foi entregue, um email de avaliação do produto
+será enviado para o usuário com um link para essa página. O usuário pode indicar uma nota entre 0 e 5 para o produto
+e adicionar um comentário.
+
 #### Área administrativa
 
 Apenas administradores podem acessar essa área.
 
-**Tela de cadastro de administrador**         
+**Tela de cadastro de administrador**
 
 O super administrador poderá cadastrar outros administradores.
 
-**Tela de cadastro de usuário**         
+**Tela de cadastro de usuário**
 
 Um administrador poderá cadastrar usuários, fornecendo os dados de usuário já mencionados anteriormente.
 
-**Tela de produtos**         
+**Tela de produtos**
 
 Um administrador poderá ver os produtos cadastrados no seu site. A interface é quase idêntica à vista pelo usuário,
 mas o administrador terá a opção de editar o que é mostrado clicando em um ícone de lápis.
 
-**Tela de relatório de vendas**         
+**Tela de relatório de vendas**
 
 É mostrado, para cada produto vendido, sua quantidade em estoque, seu valor unitário e seu valor total vendido.
 Também será informado a quantia total de vendas, o valor médio da compra e a quantidade total de compras.
