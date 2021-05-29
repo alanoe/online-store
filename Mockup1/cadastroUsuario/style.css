@@ -1,18 +1,32 @@
 @import "../common.css";
 
-#login-container {
+#link-home {
+  color: #DFE22F;
+  text-decoration: none;
+  text-align: right;
+}
+#header-links{
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#header-links li {
+  list-style-type: none;
+}
+
+#cadastro-container {
   /* flex container properties */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#login-titulo {
+#cadastro-titulo {
   font-size: xx-large;
   font-weight: 700;
 }
 
-#login-form {
+#cadastro-form {
   border: 0.8em solid #1B1818;
   padding: 1%;
 
@@ -24,7 +38,7 @@
   flex: 1;
 }
 
-#login-form label, #login-form input {
+#cadastro-form label, #cadastro-form input {
   display: block;
   width: 100%;
 }
@@ -37,11 +51,3 @@ input[type=submit] {
   font-weight: bold;
 }
 
-#oferta-cadastro {
-  margin-top: 2%;
-  display: block;
-}
-
-#link-cadastro{
-  display: block;
-}

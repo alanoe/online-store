@@ -1,108 +1,56 @@
-*{
-  font-family: 'Poppins', sans-serif;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-}
-
-.conteudo {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
-}
-
-.descricao {
-  flex:1;
-}
-
-input[type=submit] {
-  background-color: #1B1818;
-  color: #ffffff;
-  border: none;
-  width: 60%;
-  font-weight: bold;
-}
-
-#link-home, #link-logout {
-  color: #DFE22F;
-  text-decoration: none;
-}
-
-
-#link-lista li {
-  list-style-type: none;
-  padding-inline-start: 0;
-  display: inline;
-  align-items: center;
-  justify-content: center;
-}
-
-.link-pags {
-  margin-right: 5%;
-  font-weight:400;
-}
-
-.cadastro-admin {
-  display: flex;
-  width: 100%;
-  margin: 0;
-}
-
-.cadastro-admin-card{
-  flex: 1;
-  margin-left: 5%;
-  width: 100%;
-}
-
-form {
-  display: table;
-  padding-left: 12%;
-}
-
-label {
-  display: table-cell;
-}
-
-input {
-  display: table-cell;
-  margin-left: 0em;
-}
-
-.cadastro-form {
-  display: flex;
-  padding: 1%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; 
-  width: 70%;
-  margin: 0;
-}
-
-.cadastro-titulo{
-  text-align: center;
-  font-size: xx-large;
-  font-weight: 700;
-  width: 70%;
-}
-
-.nav-bar {
-  background-color: #1B1818;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #DFE22F;
-  padding: 1%;
-}
-
-
-#titulo-granja {
-  margin-left: 5%;
-}
+@import "../common.css";
 
 #img-user {
   width: 20%;
 }
+
+#link-home {
+  color: #DFE22F;
+  text-decoration: none;
+}
+#header-links{
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#header-links li {
+  list-style-type: none;
+}
+
+#cadastro-container {
+  /* flex container properties */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cadastro-titulo {
+  font-size: xx-large;
+  font-weight: 700;
+}
+
+#cadastro-form {
+  border: 0.8em solid #1B1818;
+  padding: 1%;
+
+  /* flex container properties */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+#cadastro-form label, #cadastro-form input {
+  display: block;
+  width: 100%;
+}
+
+input[type=submit] {
+  margin-top: 5%;
+  background-color: #1B1818;
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+}
+
