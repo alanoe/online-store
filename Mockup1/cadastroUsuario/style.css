@@ -1,11 +1,4 @@
-*{
-  font-family: 'Poppins', sans-serif;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-}
+@import "../universal_reset.css";
 
 .conteudo {
   display: flex;
@@ -29,7 +22,7 @@ input[type=submit] {
 #link-home, #link-logout {
   color: #DFE22F;
   text-decoration: none;
-  
+
 }
 
 #link-lista li {
@@ -79,7 +72,7 @@ input {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-align: center; 
+  text-align: center;
   width: 70%;
   margin: 0;
 }
