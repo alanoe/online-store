@@ -12,64 +12,72 @@
     >
   </head>
   <body>
-    <div class="nav-bar">
-      <div id="titulo-granja">
-        <h1>Granja dos desesperados</h1>
-      </div>
 
-      <div class="link-pags">
+    <div id="barra-nav">
+      <img src="../imgs/ovo-branco.png" alt="logo" id="logo">
+      <h1>Granja dos desesperados</h1>
+      <div id="header-links">
         <ul id="link-lista">
           <li>
             <a id="link-home" href="">Home</a>
-          </li>
-          <li>
-            <a id="link-logout" href="">Logout</a>
-          </li>
-          <li>
-            <img src="../imgs/user.png" alt="perfil-usuario" id="img-user"/>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="conteudo">
-      <div class="cadastro-usurario">
-        <div class="cadastro-usuario-card">
-          <div class="cadastro-titulo">
-            <h2>Informações do usuário</h2>
-          </div>
-          <div id="cadastro-form">
-            <form action="">
-              <div class="cadastro-form-info-pessoal">
-                <label for="user-name">Nome de usuário </label>
-                <input id="user-name"type="text"> <br>
-                <label for="user-cep">CEP </label>
-                <input id="user-cep" type="text"> <br>
-                <label for="user-street">Rua </label>
-                <input id="user-street" type="text"> <br>
-                <label for="user-house-number">Número </label>
-                <input id="user-house-number" type="text"> <br>
-                <label for="user-phone">Telefone</label>
-                <input id="user-phone" type="text"> <br>
-                <label for="user-email">Email </label>
-                <input id="user-email" type="email"> <br>
-              </div>
+    <div id="cadastro-container">
+      <div id="cadastro-titulo">
+        <h2>Criação de conta</h2>
+      </div>
+      <div id="cadastro-form">
+        <form action="">
+          <label for="user-name">Nome de usuário </label>
+          <input id="user-name"type="text">
+          <label for="user-email">Email </label>
+          <input id="user-email" type="email">
+          <label for="user-cep">CEP </label>
+          <input id="user-cep" type="text">
+          <label for="user-street">Rua </label>
+          <input id="user-street" type="text">
+          <label for="user-house-number">Número </label>
+          <input id="user-house-number" type="text">
+          <label>Cidade</label>
+          <input type="text">
+          <label>Estado</label>
+          <select>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AM">AM</option>
+            <option value="AP">AP</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MG">MG</option>
+            <option value="MT">MT</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="PR">PR</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="SE">SE</option>
+            <option value="SP">SP</option>
+            <option value="TO">TO</option>
+          </select>
+          </select>
+          <label for="user-phone">Telefone</label>
+          <input id="user-phone" type="text" placeholder="(xx) xxxxx-xxxx">
 
-
-              <div class="cadastro-form-regiao">
-                <label>Cidade</label>
-                <input type="text">
-                <label>Estado</label>
-                <input type="text">
-              </div>
-
-              <input type="submit" value="Cadastrar"> <br>
-              Já possui cadastro? <a href="">Login</a>
-           </form>
-          </div>
-
-        </div>
-
+          <input type="submit" value="Cadastrar">
+       </form>
       </div>
     </div>
 

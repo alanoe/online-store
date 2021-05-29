@@ -1,20 +1,4 @@
-@import "../universal_reset.css";
-
-#barra-nav {
-  background-color: #1B1818;
-  color: #DFE22F;
-
-  padding: 1%;
-  /* flex container properties*/
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-#logo {
-  width: 15%;
-  height: 15%;
-}
+@import "../common.css";
 
 #login-container {
   /* flex container properties */
