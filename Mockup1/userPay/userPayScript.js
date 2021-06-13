@@ -1,0 +1,1 @@
+document.getElementById('total-value').innerHTML = "R$1200.00"

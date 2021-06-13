@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Granja dos desesperados</title>
+    <link href="userProfile.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/4f1c895f06.js" crossorigin="anonymous"></script>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  >
+  </head>
+  <body>
+    <div id="bar-nav">
+      <img src="../imgs/ovo-branco.png" alt="logo" id="logo">
+      <h1>Granja dos desesperados</h1>
+      <div id="header-links">
+        <ul id="link-list">
+          <li>
+            <a id="link-header" href="../userHome/userHome.html">Home</a>
+          </li>
+          <li>
+            <a id="link-header" href="../login/index.html">Logout</a>
+          </li>
+          <li>
+            <a id="link-header" href="../userProfile/userProfile.html">
+                <i class="fas fa-user"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    
+
+    <div id="info-edit">
+      <h1>Informações pessoais</h1>
+      <a id="edit" href="userProfile.html"><i class="fas fa-edit"></i></a>      
+    </div>
+
+    <!--A ideia é colocar um form disabled com as informações do usuário e depois, ao editar-->
+    <div>
+      <form action="">
+        <div class="user-forms">
+          <label for="user-name">Nome de usuário </label>
+          <input id="user-name" type="text" disabled>        
+        </div>
+        <div class="user-forms">
+          <label for="user-email">Email </label>
+          <input id="user-email" type="email" disabled>
+        </div>
+        <div class="user-forms">
+          <label for="user-cep">CEP </label>
+          <input id="user-cep" type="text" disabled>
+        </div>
+        <div class="user-forms">
+          <label for="user-street">Rua </label>
+          <input class="user-forms-element" id="user-street" type="text" disabled>
+          <label for="user-house-number">Número </label>
+          <input class="user-forms-element" id="user-house-number" type="text" disabled>
+          <label for="user-city">Cidade</label>
+          <input class="user-forms-element" id="user-city" type="text" disabled>
+        </div>
+        <div class="user-forms">
+          <label>Estado</label>
+          <select id="user-state" disabled>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AM">AM</option>
+            <option value="AP">AP</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MG">MG</option>
+            <option value="MT">MT</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="PR">PR</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="SE">SE</option>
+            <option value="SP">SP</option>
+            <option value="TO">TO</option>
+          </select>
+        </div>
+        <div class="user-forms">
+          <label for="user-phone">Telefone</label>
+          <input id="user-phone" type="text" placeholder="(xx) xxxxx-xxxx"  disabled>
+        </div>
+                
+        <!--TROCAR O TIPO????? fazer sumir enquanto o botão de edit lá em cima não for clicado-->
+        <input type="submit" value="Editar">
+     </form>
+
+    </div>
+
+    <script src="userProfileScript.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Granja dos desesperados</title>
-    <link href="homeUsuarioStyle.css" rel="stylesheet" type="text/css" />
+    <link href="userHome.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/4f1c895f06.js" crossorigin="anonymous"></script>
     <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
@@ -12,26 +12,39 @@
   >
   </head>
   <body>
-    <div id="barra-nav">
+
+    
+    <div id="bar-nav">
       <img src="../imgs/ovo-branco.png" alt="logo" id="logo">
       <h1>Granja dos desesperados</h1>
       <div id="header-links">
-        <ul id="link-lista">
+        <ul id="link-list">
           <li>
-            <a id="link-header" href="../homeUsuario/index.html">Home</a>
+            <a id="link-header" href="../userHome/userHome.html">Home</a>
           </li>
           <li>
             <a id="link-header" href="../login/index.html">Logout</a>
           </li>
           <li>
-            <a id="link-header" href="">
+            <a id="link-header" href="../userProfile/userProfile.html">
                 <i class="fas fa-user"></i>
             </a>
           </li>
         </ul>
       </div>
     </div>
-          
+    
+
+    <div id="search-area">
+      <!--Simbolo de busca-->
+      <div id="search-bar">
+        <input type="search" id="product-search">
+        <button id="search-button"><i class="fas fa-search"></i></button>      
+      </div>      
+      <!--Simbolo do carrinho-->
+      <a id="link-cart" href="../userCart/userCart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
 
     <script src="script.js"></script>
   </body>

@@ -1,0 +1,37 @@
+@import "../common.css";
+
+
+#value-bar {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+#card-data{
+    margin-top: 1.6rem;
+}
+
+#payment-options{
+    display: flex;
+}
+
+
+#total-value, #pay-select{
+    margin-left: 0.8rem;
+}
+
+#cc-validity-month, #cc-validity-year{
+    width: 2rem;
+}
+
+#security-code{
+    width: 2.3rem;
+}
+
+#pay-submit{
+    margin: 0.8rem;
+    padding: 0.4rem;
+    color: white;
+    background-color: #1B1818;
+    border-radius: 0.2rem;
+}

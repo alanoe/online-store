@@ -1,0 +1,28 @@
+@import "../common.css";
+
+#info-edit{
+    margin: 2.4rem;
+    display: flex;
+    align-items: center;
+}
+
+#edit{
+    margin-left: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.user-forms{
+    margin-top: 0.4rem;
+}
+
+.user-forms-element{
+    margin-right: 0.4rem;
+}
+
+#user-name{
+    width: 18rem;
+}
+
+#user-house-number{
+    width:4rem;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Granja dos desesperados</title>
+    <link href="userProduct.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/4f1c895f06.js" crossorigin="anonymous"></script>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  >
+  </head>
+  <body>
+
+    
+    <div id="bar-nav">
+      <img src="../imgs/ovo-branco.png" alt="logo" id="logo">
+      <h1>Granja dos desesperados</h1>
+      <div id="header-links">
+        <ul id="link-list">
+          <li>
+            <a id="link-header" href="../userHome/userHome.html">Home</a>
+          </li>
+          <li>
+            <a id="link-header" href="../login/index.html">Logout</a>
+          </li>
+          <li>
+            <a id="link-header" href="../userProfile/userProfile.html">
+                <i class="fas fa-user"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+
+    <div id="search-area">
+      <!--Simbolo de busca-->
+      <div id="search-bar">
+        <input type="search" id="product-search">
+        <button id="search-button"><i class="fas fa-search"></i></button>      
+      </div>      
+      <!--Simbolo do carrinho-->
+      <a id="link-cart" href="../userCart/userCart.html"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+
+    <div id="overall">
+        <div id="product">
+            <div id="picture">
+                <img id="product-img" src="../imgs/unicornio.jfif">
+                <div id="description"></div>
+                
+            </div>
+            <div id="price">
+                <div id="name">
+                    <h2>Ovo de unicornio</h2>
+                    <p id="id">ID: 123789456</p>
+                </div>
+                <h2 id="value">R$4200.00</h2>
+                <p id="product-qnt">Quantidade disponivel: 69</p>
+                <form>
+                    <label for="product-price">Quantidade</label>
+                    <input id="product-price" type="number" value="1" min="1" max="99">
+                    <input type="submit" value="adicionar">
+                </form>
+            </div>
+        </div>
+        <div id="mother">
+            <div id="mom-picture">
+                <h3 id="mom-title">Informacoes da mae</h3>
+                <img id="mom-img" src="../imgs/unicornioMae.jpg">
+            </div>
+            <div id="mom-stuff">
+                <div id="mom-description"></div>
+                <ul id="mom-list">
+                    <li class="mom-things">
+                        <h3>Nome:</h3>
+                        <p id="name">L'Oreal</p>
+                    </li>
+                    <li class="mom-things">
+                        <h3>Idade:</h3>
+                        <p id="age"> 368 anos</p>
+                    </li>
+                    <li class="mom-things">
+                      <h3>Peso:</h3>
+                      <p id="weight"> 568 Kg</p>
+                    </li>
+                    <li class="mom-things">
+                      <h3>Signo:</h3>
+                      <p id="zodiac-sign"> Sagitario</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="userProductScript.js"></script>
+  </body>
+</html>
