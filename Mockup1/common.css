@@ -15,6 +15,11 @@
   box-sizing: inherit;
 }
 
+a{
+  text-decoration: none;
+}
+
+/*-------HEADER-------------------*/
 #barra-nav {
   background-color: #1B1818;
   color: #DFE22F;
@@ -25,7 +30,38 @@
   align-items: center;
 }
 
-#logo {
-  width: 15%;
-  height: 15%;
+#logo{
+  height: 4.5rem;
+  width: 4rem;
+}
+
+#link-header {
+  color: #DFE22F;
+  text-decoration: none;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+#link-lista{
+  display: flex;
+}
+
+#header-links{
+  margin-left: auto;
+  margin-right: 0.8rem;
+}
+
+#header-links li {
+  list-style-type: none;
+}
+
+#user-img{
+  height: 1.8rem;
+  width: 1.8rem;   
+}
+
+/*-------------------------*/
+
+a:visited{
+  color:inherit;
 }
