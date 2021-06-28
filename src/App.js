@@ -1,9 +1,11 @@
+/*
 import './App.css';
 import {useState} from 'react'
 import Button from './components/Button'
 import Header from './components/Header'
 import Products from './components/Products'
 import AddProductForm from './components/AddProductForm'
+
 
 function App() {
   const [showAddTaskForm, setShowAddTaskForm] = useState (false)
@@ -37,6 +39,22 @@ function App() {
       {showAddTaskForm ? (<AddProductForm onAddReq={addProduct} /> ) : null}
       <Products products={products} onRemoveReq={removeProduct} />
     </div>
+  );
+}
+
+export default App;
+*/
+
+import React from 'react';
+import './App.css';
+
+import Routes from './routes';
+
+function App(){
+  return(
+    <React.Fragment>
+      <Routes />
+    </React.Fragment>
   );
 }
 
