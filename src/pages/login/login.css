@@ -1,0 +1,38 @@
+
+  .login-container {
+    /* flex container properties */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-titulo {
+    font-size: xx-large;
+    font-weight: 700;
+  }
+  
+  .login-form {
+    border: 0.8em solid #1B1818;
+    padding: 1%;
+  
+    /* flex container properties */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .login-form label, .login-form input {
+    display: block;
+    width: 100%;
+  }
+  
+  input[type=submit] {
+    margin-top: 5%;
+    background-color: #1B1818;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,50 @@
+
+.picture, .mom-stuff{
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-img, .mom-img{
+    height: 16rem;
+    width: 16rem;
+    border: #1B1818;
+}
+
+.description{
+    margin-top: 1.2rem;
+}
+
+.product{
+    display: flex;
+    justify-content: space-around;    
+}
+
+.product-qnt{
+    margin-top: 1.6rem;
+}
+
+.mother{
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: space-around;    
+}
+.mom-list .mom-stuff{
+    align-items: none;
+}
+
+.mom-picture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mom-list{
+    margin-top: 1.6rem;
+}
+
+.mom-things{
+    display: flex;
+    align-items: center;
+}

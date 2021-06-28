@@ -1,13 +1,14 @@
 import React from 'react'
 import './header.css'
 
-import Logotipo from '../../../img/ovo-branco.png';
+//images
+import Logotipo from "../../img/ovo-branco.png";
 
 export default function header() {
     return(
         <div>
             <div className="bar-nav">
-              <img src={Logotipo} alt="logo" className="logo" />
+              <img className="logo" src={Logotipo} alt="logo"/>
               <h1>Granja dos desesperados</h1>
               <div className="header-links">
                 <ul className="link-list">

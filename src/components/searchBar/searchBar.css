@@ -1,0 +1,27 @@
+.search-area{
+    margin: 1.2rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar{
+    height: 1.8rem;
+    display: flex;
+}
+
+.product-search{
+    width: 16rem;
+}
+
+.search-button{
+    width: 2.4rem;
+    border-color: white;
+    background-color: white;
+    box-shadow: none;
+}
+
+.link-cart{
+    color: #1B1818;
+    font-size: 2.4rem;
+}
