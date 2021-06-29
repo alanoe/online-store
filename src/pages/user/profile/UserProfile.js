@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+// our imports
 import './userProfile.css';
+import Header from '../../../components/header/Header';
 
-import Header from '../../../components/header/header';
-
-export default function userProfile(){
+const UserProfile = () => {
     return(
         <div>
             <Header />
             <div className="info-edit">
                 <h1>Informações pessoais</h1>
-                <a className="edit" href="userProfile.html"><i class="fas fa-edit"></i></a>      
+                <Link className="edit" to="/profile" />      
             </div>
 
             <div>
@@ -83,3 +85,4 @@ export default function userProfile(){
         </div>
     );
 }
+export default UserProfile

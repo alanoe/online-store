@@ -2,7 +2,7 @@ import React from 'react'
 import './searchBar.css'
 
 
-export default function searchBar(){
+const SearchBar = () => {
     return(
         <div>
              <div className="search-area">
@@ -15,5 +15,6 @@ export default function searchBar(){
                 <a className="link-cart" href="../userCart/userCart.html"><i class="fas fa-shopping-cart"></i></a>
             </div>
         </div>
-    )
+    );
 }
+export default SearchBar;

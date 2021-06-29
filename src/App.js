@@ -46,8 +46,9 @@ export default App;
 */
 
 import React from 'react';
-import './App.css';
 
+// our imports
+import './App.css';
 import Routes from './routes';
 
 function App(){

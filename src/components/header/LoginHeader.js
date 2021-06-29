@@ -4,7 +4,7 @@ import './header.css'
 //images
 import Logotipo from "../../img/ovo-branco.png";
 
-export default function header(){
+const LoginHeader = () => {
     return(
         <div>
             <div className="bar-nav">
@@ -13,7 +13,7 @@ export default function header(){
                 <div className="header-links">
                     <ul className="link-list">
                     <li>
-                        <a className="link-header" href="../userSign/userSign.html">Cadastro</a>
+                        <a className="link-header" href="../signUp/signUp.html">Cadastro</a>
                     </li>
                     </ul>
                 </div>
@@ -21,3 +21,4 @@ export default function header(){
         </div>
     )
 }
+export default LoginHeader;

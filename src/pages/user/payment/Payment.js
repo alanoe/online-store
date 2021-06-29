@@ -1,10 +1,11 @@
 import React from 'react';
-import './userPay.css';
 
-import Header from '../../../components/header/header';
+// our imports
+import './payment.css';
+import Header from '../../../components/header/Header';
 
 
-export default function userPay(){
+const Payment = () => {
     return(
         <div>
             <Header />
@@ -54,3 +55,4 @@ export default function userPay(){
         </div>
     );
 }
+export default Payment

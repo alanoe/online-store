@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+// our imports
 import './login.css';
+import LoginHeader from '../../../components/header/LoginHeader';
 
-import Header from '../../components/header/headerLogin';
 
-
-export default function userCart(){
+const Login = () => {
     return(
         <div>
-            <Header />
+            <LoginHeader />
             <div className="login-container">
 
                 <div className="login-titulo">
@@ -21,7 +23,7 @@ export default function userCart(){
                         <label for="user-password">Senha</label>
                         <input type="password" className="user-password"/>
                         <input type="submit" value="Entrar"/>
-                        <a className="link-recuperar-senha" href="../userHome/userHome.html">Esqueceu sua senha?</a>
+                        <Link className="link-recuperar-senha" to="pages/user/retrievePassword">Esqueceu sua senha?</Link>
                     </form>
                 </div>
 
@@ -30,3 +32,4 @@ export default function userCart(){
         </div>
     );
 }
+export default Login;

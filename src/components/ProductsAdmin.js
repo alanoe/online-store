@@ -1,6 +1,6 @@
-import Product from  './Product'
+import ProductAdmin from  './ProductAdmin'
 
-const Products = ({ products, onRemoveReq }) => {
+const ProductsAdmin = ({ products, onRemoveReq }) => {
   console.log("render products " + products)
   return (
     <>
@@ -8,8 +8,8 @@ const Products = ({ products, onRemoveReq }) => {
         <Product key={p.id} product={p} onRemoveReq={onRemoveReq}/> 
       ))}  
     </>
-  )
+  );
 }
 
-export default Products
+export default ProductsAdmin;
   

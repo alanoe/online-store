@@ -1,18 +1,20 @@
 import React from 'react';
-import './userProduct.css';
 
-import Header from '../../../components/header/header';
-import SearchBar from '../../../components/searchBar/searchBar'
+// our imports
+import './product.css';
+import Header from '../../../components/header/Header';
+import SearchBar from '../../../components/searchBar/SearchBar'
 
-import Unicornio from "../../../img/unicornio.jfif"
+// images
 import Mae from "../../../img/unicornioMae.jpg"
+import Unicornio from "../../../img/unicornio.jfif"
 
-var produto = {
+let product = {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     descriptionMom:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 };
 
-export default function userProduct(){
+const Product = () => {
     return(
         <div>
             <Header />
@@ -73,3 +75,4 @@ export default function userProduct(){
         </div>
     );
 }
+export default Product;
