@@ -14,7 +14,7 @@ const SignUpHeader = () => {
           <div className="header-links">
             <ul className="link-list">
               <li>
-                <Link className="link-header" to="../login/Login">Perfil</Link>
+                <Link className="link-header" to='/login'>Home</Link>
               </li>
             </ul>
         </div>

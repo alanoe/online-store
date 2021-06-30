@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.2911afac.chunk.css",
-    "main.js": "/static/js/main.d52326b6.chunk.js",
-    "main.js.map": "/static/js/main.d52326b6.chunk.js.map",
+    "main.css": "/static/css/main.ada13ad2.chunk.css",
+    "main.js": "/static/js/main.2a57ae8b.chunk.js",
+    "main.js.map": "/static/js/main.2a57ae8b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a97d7ea5.js",
     "runtime-main.js.map": "/static/js/runtime-main.a97d7ea5.js.map",
-    "static/js/2.0985dbdf.chunk.js": "/static/js/2.0985dbdf.chunk.js",
-    "static/js/2.0985dbdf.chunk.js.map": "/static/js/2.0985dbdf.chunk.js.map",
+    "static/js/2.d6c70af7.chunk.js": "/static/js/2.d6c70af7.chunk.js",
+    "static/js/2.d6c70af7.chunk.js.map": "/static/js/2.d6c70af7.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.2911afac.chunk.css.map": "/static/css/main.2911afac.chunk.css.map",
-    "static/js/2.0985dbdf.chunk.js.LICENSE.txt": "/static/js/2.0985dbdf.chunk.js.LICENSE.txt",
-    "static/media/ovo-branco.ab7aa05a.png": "/static/media/ovo-branco.ab7aa05a.png"
+    "static/css/main.ada13ad2.chunk.css.map": "/static/css/main.ada13ad2.chunk.css.map",
+    "static/js/2.d6c70af7.chunk.js.LICENSE.txt": "/static/js/2.d6c70af7.chunk.js.LICENSE.txt",
+    "static/media/ovo-branco.ab7aa05a.png": "/static/media/ovo-branco.ab7aa05a.png",
+    "static/media/unicornio.1198fa59.jfif": "/static/media/unicornio.1198fa59.jfif",
+    "static/media/unicornioMae.d434b481.jpg": "/static/media/unicornioMae.d434b481.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a97d7ea5.js",
-    "static/js/2.0985dbdf.chunk.js",
-    "static/css/main.2911afac.chunk.css",
-    "static/js/main.d52326b6.chunk.js"
+    "static/js/2.d6c70af7.chunk.js",
+    "static/css/main.ada13ad2.chunk.css",
+    "static/js/main.2a57ae8b.chunk.js"
   ]
 }

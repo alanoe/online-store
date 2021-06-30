@@ -11,7 +11,7 @@ const UserProfile = () => {
             <Header />
             <div className="info-edit">
                 <h1>Informações pessoais</h1>
-                <Link className="edit" to="/profile" />      
+                <Link className="edit" to='/profile' />      
             </div>
 
             <div>

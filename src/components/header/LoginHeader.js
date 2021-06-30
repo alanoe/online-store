@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import './header.css'
 
 //images
@@ -13,7 +15,7 @@ const LoginHeader = () => {
                 <div className="header-links">
                     <ul className="link-list">
                     <li>
-                        <a className="link-header" href="../signUp/signUp.html">Cadastro</a>
+                        <Link className="link-header" to='/signUp'>Cadastro</Link>
                     </li>
                     </ul>
                 </div>

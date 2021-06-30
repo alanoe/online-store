@@ -29,6 +29,7 @@ const ShoppingCart = () => {
         </div>      
         <div className="purshed">
           <h3>Valor total:  R$4200.00</h3>
+          {/** Como não tem o backend, colocar para ir direto para a página de pagamento */}
           <input className="purchase-submit" type="submit" value="Comprar" />
         </div>
       </div>

@@ -23,7 +23,7 @@ const Product = () => {
             <div className="product">
                 <div className="picture">
                     <img className="product-img" src={Unicornio} />
-                    <div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>                   
+                    <div className="description">{product.description}</div>                   
                 </div>
                 <div className="price">
 
@@ -50,7 +50,7 @@ const Product = () => {
                     <img className="mom-img" src={Mae} />
                 </div>
                 <div className="mom-stuff">
-                    <div className="mom-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                    <div className="mom-description">{product.descriptionMom}</div>
                     <ul className="mom-list">
                         <li class="mom-things">
                             <h3>Nome:</h3>

@@ -7,6 +7,7 @@ import Payment from './pages/user/payment/Payment';
 import Product from './pages/user/product/Product';
 import ProductList from './pages/user/product/ProductList';
 import Profile from './pages/user/profile/UserProfile';
+import RecoverPassword from './pages/user/recoverPassword/RecoverPassword';
 import ShoppingCart from './pages/user/shoppingCart/ShoppingCart';
 import SignUp from './pages/user/signUp/SignUp';
 
@@ -21,7 +22,8 @@ const Routes = () => {
                 <Route path={'/pay'} exact component={ Payment } />
                 <Route path={'/product'} exact component={ Product } />
                 <Route path={'/profile'} exact component={ Profile } />
-                <Route path={'/sign'} exact component={ SignUp } />
+                <Route path={'/recover'} exact component={RecoverPassword} />
+                <Route path={'/signUp'} exact component={ SignUp } />
             </Switch>
         </BrowserRouter>
     );

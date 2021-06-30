@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import './searchBar.css'
 
 
@@ -12,7 +14,7 @@ const SearchBar = () => {
                     <button className="search-button"><i class="fas fa-search"></i></button>      
                 </div>      
                 
-                <a className="link-cart" href="../userCart/userCart.html"><i class="fas fa-shopping-cart"></i></a>
+                <Link className="link-cart" to="./cart"><i class="fas fa-shopping-cart"></i></Link>
             </div>
         </div>
     );
