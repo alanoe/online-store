@@ -24,7 +24,7 @@ var productList = [
 const ProductList = () => {
     return(
         <div>
-          <Header />
+          <Header Login={true}/>
           <SearchBar />
 
          <div className='product-list'>

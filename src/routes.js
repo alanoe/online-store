@@ -10,7 +10,10 @@ import Profile from './pages/user/profile/UserProfile';
 import RecoverPassword from './pages/user/recoverPassword/RecoverPassword';
 import ShoppingCart from './pages/user/shoppingCart/ShoppingCart';
 import SignUp from './pages/user/signUp/SignUp';
-import AdminList from './pages/admin/adminList/AdminList'
+import AdminList from './pages/admin/adminList/AdminList';
+import AdminProfile from './pages/admin/adminProfile/AdminProfile';
+import AdminProduct from './pages/admin/adminProduct/AdminProduct';
+import Sales from './pages/admin/sales/Sales';
 
 
 const Routes = () => {
@@ -26,6 +29,9 @@ const Routes = () => {
                 <Route path={'/recover'} exact component={RecoverPassword} />
                 <Route path={'/signUp'} exact component={ SignUp } />
                 <Route path={'/adminList'} exact component={ AdminList } />
+                <Route path={'/adminProfile'} exact component={ AdminProfile } />
+                <Route path={'/adminList'} exact component={ AdminProduct } />
+                <Route path={'/sales'} exact component={ Sales } />
             </Switch>
         </BrowserRouter>
     );

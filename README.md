@@ -111,12 +111,18 @@ Também será informado a quantia total de vendas, o valor médio da compra e a 
 
 ## Comentários sobre o código
 
+
 ## Plano de teste
 
 ## Resultados de teste
 
 ## Processo de Execução
-
+Após baixado o repositório do github é necessário apenas executar os comandos a seguir pra visualizar a aplicaçõa:
+```
+>> npm i
+>> npm run build
+>> npm run start
+```
 ## Problemas
 
 ## Comentários
