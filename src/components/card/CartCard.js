@@ -4,12 +4,12 @@ import './cartCard.css'
 
 const CartCard = (props) => {
     return(
-        <div className="product-container">
-            <img className="product-img" src={props.image} />
-            <h3 className="product-name">{props.name}</h3>
-            <div className="product-info">
-                <h3 className="product-value">R$ {props.value.toFixed(2)}</h3>
-                <p className="product-qnt">Quantidade: {props.qtd}</p>
+        <div className="cart-card-container">
+            <img className="cart-card-img" src={props.image} />
+            <h3 className="cart-card-name">{props.name}</h3>
+            <div className="cart-card-info">
+                <h3 className="cart-card-value">R$ {props.value.toFixed(2)}</h3>
+                <p className="cart-card-qnt">Quantidade: {props.qtd}</p>
             </div>
         </div>
     );

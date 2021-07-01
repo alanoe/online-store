@@ -10,6 +10,7 @@ import Profile from './pages/user/profile/UserProfile';
 import RecoverPassword from './pages/user/recoverPassword/RecoverPassword';
 import ShoppingCart from './pages/user/shoppingCart/ShoppingCart';
 import SignUp from './pages/user/signUp/SignUp';
+import AdminList from './pages/admin/adminList/AdminList'
 
 
 const Routes = () => {
@@ -24,6 +25,7 @@ const Routes = () => {
                 <Route path={'/profile'} exact component={ Profile } />
                 <Route path={'/recover'} exact component={RecoverPassword} />
                 <Route path={'/signUp'} exact component={ SignUp } />
+                <Route path={'/adminList'} exact component={ AdminList } />
             </Switch>
         </BrowserRouter>
     );

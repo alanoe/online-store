@@ -1,7 +1,7 @@
 import React from 'react';
 
 // our imports
-import './product.css';
+import './adminProduct.css';
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 
@@ -14,7 +14,7 @@ let product = {
     descriptionMom:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 };
 
-const Product = () => {
+const AdminProduct = () => {
     return(
         <div>
             <Header />
@@ -75,4 +75,4 @@ const Product = () => {
         </div>
     );
 }
-export default Product;
+export default AdminProduct;
