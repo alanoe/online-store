@@ -9,9 +9,10 @@ import Logotipo from "../../img/ovo-branco.png";
 const Header = () => {
   return(
     <div>
-      <div className="bar-nav">
-        <img className="logo" src={Logotipo} alt="logo"/>
-        <h1>Granja dos desesperados</h1>
+      <div className="bar-nav">        
+        <Link to='/'><img className="logo" src={Logotipo} alt="logo"/></Link>
+        <Link to='/'><h1>Granja dos desesperados</h1></Link>
+        
         <div className="header-links">
           <ul className="link-list">
             {/* TODO: must show either login or logout depending on if user is logged in  */ }
@@ -22,7 +23,7 @@ const Header = () => {
               <Link className="link-header" to='/login'>Logout</Link>
             </li>
             <li>
-              <Link className="link-header" to='/profile' >Perfil</Link>
+              <Link className="link-header" to='/profile' ><i class="fas fa-user"></i></Link>
             </li>
           </ul>
         </div>

@@ -52,19 +52,19 @@ const Product = () => {
                 <div className="mom-stuff">
                     <div className="mom-description">{product.descriptionMom}</div>
                     <ul className="mom-list">
-                        <li class="mom-things">
+                        <li className="mom-things">
                             <h3>Nome:</h3>
                             <p className="name">L'Oreal</p>
                         </li>
-                        <li class="mom-things">
+                        <li className="mom-things">
                             <h3>Idade:</h3>
                             <p className="age"> 368 anos</p>
                         </li>
-                        <li class="mom-things">
+                        <li className="mom-things">
                         <h3>Peso:</h3>
                         <p className="weight"> 568 Kg</p>
                         </li>
-                        <li class="mom-things">
+                        <li className="mom-things">
                         <h3>Signo:</h3>
                         <p className="zodiac-sign"> Sagitario</p>
                         </li>

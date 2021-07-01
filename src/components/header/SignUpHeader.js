@@ -9,12 +9,12 @@ const SignUpHeader = () => {
   return(
     <div>
       <div className="bar-nav">
-        <img src={Logotipo} alt="logo" className="logo" />
-          <h1>Granja dos desesperados</h1>
-          <div className="header-links">
+        <Link to='/'><img className="logo" src={Logotipo} alt="logo"/></Link>
+        <Link to='/'><h1>Granja dos desesperados</h1></Link>
+        <div className="header-links">
             <ul className="link-list">
               <li>
-                <Link className="link-header" to='/login'>Home</Link>
+                <Link className="link-header" to='/login'>Login</Link>
               </li>
             </ul>
         </div>

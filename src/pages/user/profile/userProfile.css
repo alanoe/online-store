@@ -2,7 +2,7 @@
 .info-edit{
     margin: 2.4rem;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .edit{
@@ -25,3 +25,27 @@
 .user-house-number{
     width:4rem;
 }
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile{
+    border: 0.8em solid #1B1818;
+    padding: 1%;
+  
+    /* flex container properties */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
+
+.user-profile label, .user-profile input{
+    display: block;
+    width: 100%;
+}
+  

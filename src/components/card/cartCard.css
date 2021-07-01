@@ -1,0 +1,19 @@
+.product-container{
+    border: 0.2rem black solid;
+    padding: 0.5rem;
+    border-radius: 10px;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-info, .product-name{
+    margin: 0 2.4rem;
+}
+
+.product-img{
+    height: 8rem;
+    width: 8rem;
+    border: #1B1818;
+}

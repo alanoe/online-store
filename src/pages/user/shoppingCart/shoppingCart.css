@@ -1,34 +1,25 @@
-
+.cart-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .cart-title{
-    margin-left: 1.2rem;
+    margin-top: 0.4rem;
 }
 
-.purshed-list{
+.purchased-list{
     margin-top: 1.2rem;
-    margin-left: 1.2rem;
-    width: 70%;
-}
-
-.product{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.product-img{
-    height: 8rem;
-    width: 8rem;
-    border: #1B1818;
     
+    display: flex;
+    flex-direction: column;
 }
 
-.purshed-info{
+.purchased-info{
     margin-top: 1.6rem;
-    margin-left: 0.8rem;
 }
 
-.purshed{
+.purchased{
     display: flex;
     flex-direction: column;
     align-items: center;

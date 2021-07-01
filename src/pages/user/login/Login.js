@@ -22,7 +22,7 @@ const Login = () => {
                         <input type="text" className="user-name"/>
                         <label for="user-password">Senha</label>
                         <input type="password" className="user-password"/>
-                        <input type="submit" value="Entrar"/>
+                        <Link to='/'><input type="submit" value="Entrar"/></Link>
                         <Link className="link-recuperar-senha" to='/recover'>Esqueceu sua senha?</Link>
                     </form>
                 </div>
