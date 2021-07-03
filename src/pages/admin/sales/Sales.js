@@ -13,23 +13,30 @@ var productList = [
   {name: 'Ovo de Savio', value: 1000.00, qtd: 15, image: Unicornio}  
 ];
 
-var totalValue = 0;
+function valueTotal(){
+  var total = 0;
+  productList.forEach((prod)=>{
+      total += prod.value * prod.qtd
+  })
+  return total;
+};
+var totalValue = valueTotal();
 
 const Sales = () => {
     return(
         <div>
-          <Header />
-
-          <table className="sales-freport">
+          <Header Login={true} Admin={true} />
+          <h1 className="sales-title">Relatório</h1>
+          <table className="sales-report">
             <tr>
               <th>Produto</th>
               <th>Quantidade Vendida</th>
               <th>Valor Unitario</th>
               <th>Valor Vendido</th>
             </tr>
-            {productList.map(product => {
-              let prodValue = product.value * product.qtd;  
-              totalValue += prodValue;
+            {productList.map(product => {             
+              let prodValue = product.value * product.qtd;
+
               return (
                 <tr>
                   <td>{product.name}</td>
@@ -40,7 +47,8 @@ const Sales = () => {
               )
             })}
           </table>
-
+          <h3 className="value-sold">Valor total vendido: R$ {totalValue}</h3>
+          
         </div>
     );
 }

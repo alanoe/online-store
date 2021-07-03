@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.home-link{
+  display: flex;
+  flex-direction: row;
+}
+
 .logo{
   height: 4.5rem;
   width: 4rem;

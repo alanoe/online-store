@@ -1,7 +1,7 @@
 import ProductAdmin from  './ProductAdmin'
 
 const ProductsAdmin = ({ products, onRemoveReq }) => {
-  console.log("render products " + products)
+  
   return (
     <>
       {products.map((p) => (

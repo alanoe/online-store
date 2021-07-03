@@ -5,10 +5,23 @@ import { Link } from 'react-router-dom';
 import './userProfile.css';
 import Header from '../../../components/header/Header';
 
-const UserProfile = () => {
+var usuario = {
+    name:"Bruno Fernandes Moreira",
+    email: "moreira.bruno@usp.br",
+    cep: "99999-999",
+    rua: "Casa Baixa",
+    numero: "420",
+    cidade: "Sanca",
+    estado:"SP",
+    telefone:"(11) 99999-9999",
+}
+
+const UserProfile = (props) => {
+    let Admin = props.location.state.admin;
+    console.log(Admin)
     return(
         <div>
-            <Header />
+            <Header Admin={Admin} />
             <div className="profile-container">
                 <div className="info-edit">
                     <h1>Informações pessoais</h1>     
@@ -18,25 +31,27 @@ const UserProfile = () => {
                     <form action="">
 
                         <label for="user-name">Nome de usuário </label>
-                        <input className="user-name" type="text" disabled />        
+                        <input className="user-name" type="text" value={usuario.name} disabled />
                         
                         <label for="user-email">Email </label>
-                        <input className="user-email" type="email" disabled />
+                        <input className="user-email" type="email" value={usuario.email} disabled />
                         
-                        <label for="user-cep">CEP </label>
-                        <input className="user-cep" type="text" disabled />
+                        {!Admin && (
+                            <>
+                            <label for="user-cep">CEP </label>
+                            <input className="user-cep" type="text" value={usuario.cep} disabled />
                         
-                        
-                        <label for="user-street">Rua </label>
-                        <input className="user-forms-element" className="user-street" type="text" disabled />
-                        <label for="user-house-number">Número </label>
-                        <input className="user-forms-element" className="user-house-number" type="text" disabled />
-                        <label for="user-city">Cidade</label>
-                        <input className="user-forms-element" className="user-city" type="text" disabled />
-                        
+                            <label for="user-street">Rua </label>
+                            <input className="user-forms-element" className="user-street" type="text" value={usuario.rua} disabled />
+                            <label for="user-house-number">Número </label>
+                            <input className="user-forms-element" className="user-house-number" type="text" value={usuario.numero} disabled />
+                            <label for="user-city">Cidade</label>
+                            <input className="user-forms-element" className="user-city" type="text" value={usuario.cidade} disabled />
+                            </>
+                        )}
 
                         <label>Estado</label>
-                        <select className="user-state" disabled>
+                        <select className="user-state" value={usuario.estado} disabled>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AM">AM</option>
@@ -66,7 +81,7 @@ const UserProfile = () => {
                         </select>
                         
                             <label for="user-phone">Telefone</label>
-                            <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx"  disabled />
+                            <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={usuario.telefone}  disabled />
                                                 
                         <input type="submit" value="Editar" />
                     </form>

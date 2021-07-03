@@ -1,3 +1,25 @@
+.pay-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pay-container h1{
+    margin-top: 1rem;
+}
+
+.card-container{
+    margin-top: 1.2rem;
+    border: 0.8em solid #1B1818;
+    padding: 1%;
+  
+    /* flex container properties */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+}
 
 .value-bar {
     margin-top: 2rem;
@@ -6,7 +28,7 @@
 }
 
 .card-data{
-    margin-top: 1.6rem;
+    margin: 0.8rem 0;
 }
 
 .payment-options{
@@ -27,9 +49,11 @@
 }
 
 .pay-submit{
-    margin: 0.8rem;
+    margin: 0 auto;
+    display: block;
     padding: 0.4rem;
     color: white;
     background-color: #1B1818;
     border-radius: 0.2rem;
+    
 }

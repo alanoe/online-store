@@ -1,0 +1,36 @@
+.sales-title{
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.sales-report{
+    background-color: white;
+    border: 2px #aaa solid;
+    border-radius: 5px;
+    padding: 0;
+    display: table;
+    margin: 0 auto;
+}
+
+.sales-report tr{
+    text-align: center;
+}
+
+.sales-report tr th{
+    background-color: #aaa;
+    margin: 0;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+}
+
+.sales-report tr td{
+    color: black;
+    border-radius: 5px;
+    background-color: #ddd;
+    padding: 0.2rem 1rem;
+}
+
+.value-sold{
+    margin-top: 0.2rem;
+    text-align: center;
+}

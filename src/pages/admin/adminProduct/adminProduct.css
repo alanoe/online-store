@@ -1,50 +1,34 @@
 
-.picture, .mom-stuff{
-    max-width: 40%;
+.info-edit-product{
+    margin: 2.4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-description{
+    width: 22rem;
+}
+
+.addProduct-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.product-page-img, .mom-img{
-    height: 16rem;
-    width: 16rem;
-    border: #1B1818;
-}
-
-.description{
-    margin-top: 1.2rem;
-}
-
-.product{
-    display: flex;
-    justify-content: space-around;    
-}
-
-.product-page-qnt{
-    margin-top: 1.6rem;
-}
-
-.mother{
-    margin-top: 3.2rem;
-    display: flex;
-    justify-content: space-around;    
-}
-.mom-list .mom-stuff{
-    align-items: none;
-}
-
-.mom-picture{
+.addProduct-box{
+    border: 0.8em solid #1B1818;
+    padding: 1%;
+  
+    /* flex container properties */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    flex: 1;
     align-items: center;
 }
 
-.mom-list{
-    margin-top: 1.6rem;
+.addProduct-box label, .addProduct-box input{
+    display: block;
+    width: 100%;
 }
-
-.mom-things{
-    display: flex;
-    align-items: center;
-}
+  

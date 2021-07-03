@@ -7,26 +7,42 @@ import './header.css'
 import LogoOvo from "../../img/ovo-branco.png";
 
 
-function Header(Login){
-  console.log(Login)
+function Header({Login,Admin}){
+  console.log("header:"+Admin)
   const [login, setLogin] = useState();
+  const [admin, setAdmin] = useState();
 
   useEffect(() => {
-    if (Login) { setLogin(Login); }
+    setLogin(Login);
+    setAdmin(Admin);    
   });
 
-
+  
   return(
     <div>
-      <div className="bar-nav">        
-        <Link to='/'><img className="logo" src={LogoOvo} alt="logo"/></Link>
-        <Link to='/'><h1>Granja dos desesperados</h1></Link>
+      <div className="bar-nav">
+        
+        {
+          Admin === true ? (
+            <div><Link to='/adminList'><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+          ):(
+            <div><Link to='/'><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+          )
+        }  
+        {
+          Admin === true ? (
+            <div><Link to='/adminList'><h1>Granja dos desesperados</h1></Link></div>
+          ):(
+            <div><Link to='/'><h1>Granja dos desesperados</h1></Link></div>
+          )
+        }
+
         
         <div className="header-links">
           <ul className="link-list">
             {/* TODO: must show either login or logout depending on if user is logged in  */ }
             {
-              login === true ? (
+              Login === false ? (
                 <li>
                   <Link className="link-header" to='/login'>Login</Link>
                 </li>
@@ -35,9 +51,15 @@ function Header(Login){
                   <Link className="link-header" to='/login'>Logout</Link>
                 </li>
               )
-            }
+              }
             <li>
-              <Link className="link-header" to='/profile' ><i class="fas fa-user"></i></Link>
+              <Link className="link-header" to= {{
+                  pathname: '/profile',
+                  state: {
+                    admin: Admin
+                  }
+               }} >
+              <i class="fas fa-user"></i></Link>
             </li>
           </ul>
         </div>
@@ -45,4 +67,4 @@ function Header(Login){
     </div>
     );
 }
-export default Header();
+export default Header;
