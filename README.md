@@ -107,14 +107,17 @@ Também será informado a quantia total de vendas, o valor médio da compra e a 
 
 ### Diagrama de Navegação
 
-![Diagrama de Navegação](img/DiagramaNavegacaoWebMk2.png)
+![Diagrama de Navegação](doc/Mockup1/DiagramaNavegacaoWebMk2.png)
 
 ## Comentários sobre o código
 
 
 ## Plano de teste
 
+Testamos manualmente clincando em cada link e seguindo nosso diagrama de navegação.
+
 ## Resultados de teste
+Links funcionando.
 
 ## Processo de Execução
 Após baixado o repositório do github é necessário apenas executar os comandos a seguir pra visualizar a aplicaçõa:
@@ -123,6 +126,9 @@ Após baixado o repositório do github é necessário apenas executar os comando
 >> npm run build
 >> npm run start
 ```
+Para entrar como usuário basta ir na página de login e clicar em "Login"
+Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
 ## Problemas
+Como não tinhamos uma base de dados criamos uma lista de produtos Hardcoded para poder gerar uma página inicial com uma lista de produtos.
 
 ## Comentários
