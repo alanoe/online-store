@@ -5,6 +5,7 @@ import './adminProduct.css'
 
 import Header from '../../../components/header/Header';
 import api from './../../../Api'
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const AddProductForm = ({onAddReq}) => {
@@ -50,6 +51,10 @@ const id = new URLSearchParams(useLocation().search).get("id")
     send();
 
     alert("enviado com sucesso")
+
+    return(
+      <Redirect to="/adminList"></Redirect>
+    )
   }
 
 

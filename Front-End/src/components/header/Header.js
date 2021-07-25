@@ -56,7 +56,8 @@ function Header({Login,Admin}){
               <Link className="link-header" to= {{
                   pathname: '/profile',
                   state: {
-                    admin: Admin
+                    admin: Admin,
+                    /*id: _id*/
                   }
                }} >
               <i class="fas fa-user"></i></Link>

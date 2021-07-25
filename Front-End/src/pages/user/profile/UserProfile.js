@@ -6,22 +6,11 @@ import './userProfile.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
 
-/*
-var usuario = {
-    name: "Bruno Fernandes Moreira",
-    email: "moreira.bruno@usp.br",
-    cep: "99999-999",
-    rua: "Casa Baixa",
-    numero: "420",
-    cidade: "Sanca",
-    estado: "SP",
-    telefone: "(11) 99999-9999",
-}
-*/
+
 const UserProfile = (props) => {
     let Admin = props.location.state.admin;
 
-    const id = new URLSearchParams(useLocation().search).get("id")
+    const id = props.location.state.id;
 
     const [usuario, setUsuario] = useState({});
 
