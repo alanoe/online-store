@@ -1,11 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React ,{useState, useEffect}from 'react';
+import { Link, useLocation} from 'react-router-dom';
 
 // our imports
 import './adminProfile.css';
 import Header from '../../../components/header/Header';
 
+const api=true;
+
 const AdminProfile = () => {
+ 
+    const id = new URLSearchParams(useLocation().search).get("id")
+
+    const [usuario, setUsuario] = useState({});
+
+    const fetchData = async () => {
+        const response = await api.get('/Admin/' + id);
+        setUsuario(response.data);
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+
     return(
         <div>
             <Header />

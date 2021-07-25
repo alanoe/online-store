@@ -7,17 +7,34 @@ import Header from '../../../components/header/Header';
 
 // images
 import Unicornio from "../../../img/unicornio.jfif";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
+const api=true;
+/*
 var productList = [
   {name: 'Ovo de unicornio', value: 4200.00, qtd:1, image: Unicornio},
   {name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
   {name: 'Ovo de BRUNO', value: 1000.00, qtd: 5, image: Unicornio}
 ];
-
+*/
 var totalPrice = 40;
 
+
 const ShoppingCart = () => {
+
+  const id = new URLSearchParams(useLocation().search).get("id")
+
+  const [productList, setProductList] = useState ([]);
+
+  const fetchData = async () => {
+      const response = await api.get('/Cart/' + id);
+      setProductList(response.data);
+  }
+  useEffect (() => {
+      fetchData();
+  }, []);
+
   return(
     <div>
       <Header />

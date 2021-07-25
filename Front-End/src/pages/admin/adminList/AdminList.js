@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 // our imports
 import './adminList.css';
@@ -11,7 +11,7 @@ import Card from '../../../components/card/ProductCard'
 import Unicornio from "../../../img/unicornio.jfif";
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
-
+/*
 var productList = [
   {id: 1, name: 'Ovo da angola', value: 4200.00, qtd:1, image: Unicornio},
   {id: 2, name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
@@ -23,8 +23,22 @@ var productList = [
   {id: 8, name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
   {id: 9, name: 'Ovo de Savio', value: 1000.00, qtd: 5, image: Unicornio}
 ];
+*/
+
+const api=true;
 
 const ProductList = () => {
+
+  const [productList, setProductList] = useState ([]);
+
+  const fetchData = async () => {
+      const response = await api.get('/productList');
+      setProductList(response.data);
+  }
+  useEffect (() => {
+      fetchData();
+  }, []);
+
 
   return(
     <div>

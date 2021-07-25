@@ -8,7 +8,7 @@ import LogoOvo from "../../img/ovo-branco.png";
 
 
 function Header({Login,Admin}){
-  console.log("header:"+Admin)
+  console.log("header admin:"+Admin)
   const [login, setLogin] = useState();
   const [admin, setAdmin] = useState();
 
@@ -24,16 +24,16 @@ function Header({Login,Admin}){
         
         {
           Admin === true ? (
-            <div><Link to='/adminList'><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+            <div><Link to='/adminList' Admin={Admin}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
           ):(
-            <div><Link to='/'><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+            <div><Link to='/' Admin={Admin}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
           )
         }  
         {
           Admin === true ? (
-            <div><Link to='/adminList'><h1>Granja dos desesperados</h1></Link></div>
+            <div><Link to='/adminList' Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           ):(
-            <div><Link to='/'><h1>Granja dos desesperados</h1></Link></div>
+            <div><Link to='/' Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           )
         }
 

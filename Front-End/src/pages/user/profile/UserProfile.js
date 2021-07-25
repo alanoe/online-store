@@ -1,30 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React,{useEffect, useState} from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 // our imports
 import './userProfile.css';
 import Header from '../../../components/header/Header';
 
+const api = true;
+/*
 var usuario = {
-    name:"Bruno Fernandes Moreira",
+    name: "Bruno Fernandes Moreira",
     email: "moreira.bruno@usp.br",
     cep: "99999-999",
     rua: "Casa Baixa",
     numero: "420",
     cidade: "Sanca",
-    estado:"SP",
-    telefone:"(11) 99999-9999",
+    estado: "SP",
+    telefone: "(11) 99999-9999",
 }
-
+*/
 const UserProfile = (props) => {
     let Admin = props.location.state.admin;
+
+    const id = new URLSearchParams(useLocation().search).get("id")
+
+    const [usuario, setUsuario] = useState({});
+
+    const fetchData = async () => {
+        const response = await api.get('/User/' + id);
+        setUsuario(response.data);
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     console.log(Admin)
-    return(
+    return (
         <div>
             <Header Admin={Admin} />
             <div className="profile-container">
                 <div className="info-edit">
-                    <h1>Informações pessoais</h1>     
+                    <h1>Informações pessoais</h1>
                 </div>
 
                 <div className="user-profile">
@@ -32,21 +47,21 @@ const UserProfile = (props) => {
 
                         <label for="user-name">Nome de usuário </label>
                         <input className="user-name" type="text" value={usuario.name} disabled />
-                        
+
                         <label for="user-email">Email </label>
                         <input className="user-email" type="email" value={usuario.email} disabled />
-                        
+
                         {!Admin && (
                             <>
-                            <label for="user-cep">CEP </label>
-                            <input className="user-cep" type="text" value={usuario.cep} disabled />
-                        
-                            <label for="user-street">Rua </label>
-                            <input className="user-forms-element" className="user-street" type="text" value={usuario.rua} disabled />
-                            <label for="user-house-number">Número </label>
-                            <input className="user-forms-element" className="user-house-number" type="text" value={usuario.numero} disabled />
-                            <label for="user-city">Cidade</label>
-                            <input className="user-forms-element" className="user-city" type="text" value={usuario.cidade} disabled />
+                                <label for="user-cep">CEP </label>
+                                <input className="user-cep" type="text" value={usuario.cep} disabled />
+
+                                <label for="user-street">Rua </label>
+                                <input className="user-forms-element" className="user-street" type="text" value={usuario.rua} disabled />
+                                <label for="user-house-number">Número </label>
+                                <input className="user-forms-element" className="user-house-number" type="text" value={usuario.numero} disabled />
+                                <label for="user-city">Cidade</label>
+                                <input className="user-forms-element" className="user-city" type="text" value={usuario.cidade} disabled />
                             </>
                         )}
 
@@ -79,14 +94,14 @@ const UserProfile = (props) => {
                             <option value="SP">SP</option>
                             <option value="TO">TO</option>
                         </select>
-                        
-                            <label for="user-phone">Telefone</label>
-                            <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={usuario.telefone}  disabled />
-                                                
+
+                        <label for="user-phone">Telefone</label>
+                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={usuario.telefone} disabled />
+
                         <input type="submit" value="Editar" />
                     </form>
                 </div>
-            </div>    
+            </div>
         </div>
     );
 }
