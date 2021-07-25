@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 
 // our imports
 import './userProfile.css';
+import api from './../../../Api'
 import Header from '../../../components/header/Header';
 
-const api = true;
 /*
 var usuario = {
     name: "Bruno Fernandes Moreira",
@@ -26,7 +26,7 @@ const UserProfile = (props) => {
     const [usuario, setUsuario] = useState({});
 
     const fetchData = async () => {
-        const response = await api.get('/User/' + id);
+        const response = await api.get('/user/' + id);
         setUsuario(response.data);
     }
     useEffect(() => {

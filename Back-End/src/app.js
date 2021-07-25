@@ -5,9 +5,12 @@ const database = require('./database');
 const Product = require('./models/products');
 const Purchase = require('./models/purchases');
 const {AdminUser,User} = require('./models/users');
+const cors = require('cors');
 
 // set up application
 const app = express();
+
+app.use(cors({}));
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true

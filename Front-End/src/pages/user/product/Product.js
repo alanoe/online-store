@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import { useLocation } from 'react-router-dom';
 // our imports
 import './product.css';
+import api from './../../../Api'
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 
@@ -15,16 +16,17 @@ let product = {
     descriptionMom:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 };
 */
-const api = true;
 
-const Product = () => {
+
+const Product = (props) => {
     
-    const id = new URLSearchParams(useLocation().search).get("id")
-
+    const id = props.location.state.id
+    /*const id = new URLSearchParams(useLocation().search).get("id")*/
+    console.log("product id: "+id);
     const [product, setproduct] = useState({});
 
     const fetchData = async () => {
-        const response = await api.get('/product/' + id);
+        const response = await api.get('/products/' + id);
         setproduct(response.data);
     }
     useEffect(() => {
@@ -49,7 +51,7 @@ const Product = () => {
                         <p className="id">{product.id}</p>
                     </div>
 
-                    <h2 className="value">{product.price}</h2>
+                    <h2 className="value">R${parseInt(product.price).toFixed(2)}</h2>
                     <p className="product-page-qnt">Quantidade disponivel: {product.qnt}</p>
                     <form>
                         <label for="product-page-price">Quantidade</label>
@@ -59,35 +61,7 @@ const Product = () => {
 
                 </div>
             </div>
-
-            <div className="mother">
-
-                <div className="mom-picture">
-                    <h3 className="mom-title">Informacoes da mae</h3>
-                    <img className="mom-img" src={product.imgMom} />
-                </div>
-                <div className="mom-stuff">
-                    <div className="mom-description">{product.descriptionMom}</div>
-                    <ul className="mom-list">
-                        <li className="mom-things">
-                            <h3>Nome:</h3>
-                            <p className="name">{product.MomName}</p>
-                        </li>
-                        <li className="mom-things">
-                            <h3>Idade:</h3>
-                            <p className="age"> {product.MomAge}</p>
-                        </li>
-                        <li className="mom-things">
-                        <h3>Peso:</h3>
-                        <p className="weight">{product.MomWeight}</p>
-                        </li>
-                        <li className="mom-things">
-                        <h3>Signo:</h3>
-                        <p className="zodiac-sign"> {product.MomZodiac} </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+           
         </div>
         </div>
     );

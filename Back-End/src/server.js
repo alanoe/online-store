@@ -8,7 +8,7 @@ const debug = require('debug')('granja-desesperados:server');
 const app = require('./app');
 
 // init web server
-const port = 3000;
+const port = 3001;
 app.set('port', port);
 const server = http.createServer(app);
 

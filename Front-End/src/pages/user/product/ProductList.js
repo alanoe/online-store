@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import { Link, Redirect, useLocation} from 'react-router-dom';
 // our imports
 import './productList.css';
+import api from './../../../Api'
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 import Card from '../../../components/card/ProductCard'
 
 import Unicornio from "../../../img/unicornio.jfif";
 
-const api = true;
+
 /*
 var productList = [
   {name: 'Ovo da angola', value: 4200.00, qtd:1, image: Unicornio},
@@ -28,14 +29,16 @@ const ProductList = ({search}) => {
   const [productList, setProductList] = useState ([]);
 
   const fetchData = async () => {
-      const response = await api.get('/productList');
+      const response = await api.get('/products');
       setProductList(response.data);
+      console.log(response.data)
   }
   useEffect (() => {
       fetchData();
   }, []);
 
-  console.log("search em productlist:"+ search)
+  console.log("oi -----------")
+  console.log(productList)
 
   return(
         <div>
@@ -44,8 +47,9 @@ const ProductList = ({search}) => {
 
          <div className='product-list'>
          {productList.map(product => {            
-            if(product.name.search(search) != -1)
-            return <Link to='/product'><Card name={product.name} value={product.value} image={product.image} /></Link>
+            if(product.name.search(search) != -1)        
+              return <Link to={{ pathname: '/product', state: { id: product._id}}}><Card name={product.name} price={product.price} image={product.image} /></Link>
+            
           })}
          </div>
 

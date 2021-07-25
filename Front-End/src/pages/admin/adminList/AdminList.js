@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 
 // our imports
 import './adminList.css';
+import api from './../../../Api'
 
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
@@ -25,14 +26,12 @@ var productList = [
 ];
 */
 
-const api=true;
-
 const ProductList = () => {
 
   const [productList, setProductList] = useState ([]);
 
   const fetchData = async () => {
-      const response = await api.get('/productList');
+      const response = await api.get('/products');
       setProductList(response.data);
   }
   useEffect (() => {
@@ -47,7 +46,7 @@ const ProductList = () => {
 
       <div className='product-list'>
         {productList.map(product => {            
-          return <Link to='/product'><Card name={product.name} value={product.value} image={product.image} /></Link>
+          return <Link to='/product' id={product._id}><Card name={product.name} price={product.price} image={product.image} /></Link>
         })}
       </div>
     </div>
