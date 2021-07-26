@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { Link, Redirect, useLocation} from 'react-router-dom';
+import { Link, useLocation} from 'react-router-dom';
+import {Redirect} from 'react-router'
 //import {  } from 'react-router-dom/cjs/react-router-dom.min';
 
 import AddProductButton from '../AddProductButton'

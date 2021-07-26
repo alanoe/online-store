@@ -22,8 +22,8 @@ const Product = (props) => {
     
     const id = props.location.state.id
     /*const id = new URLSearchParams(useLocation().search).get("id")*/
-    console.log("product id: "+id);
     const [product, setproduct] = useState({});
+    const [qnt,setQnt] = useState();
 
     const fetchData = async () => {
         const response = await api.get('/products/' + id);
@@ -33,6 +33,17 @@ const Product = (props) => {
         fetchData();
     }, []);
 
+    const onSubmit = (e) => {
+        // prevent page change
+        e.preventDefault()
+        // validate form
+        async function send(){
+            await api.post('/cart', product ) 
+        };
+        send();
+        alert("produto adicionado ao carrinho");
+       
+      }
     
     return(
         <div>
@@ -53,10 +64,10 @@ const Product = (props) => {
 
                     <h2 className="value">R${parseInt(product.price).toFixed(2)}</h2>
                     <p className="product-page-qnt">Quantidade disponivel: {product.qnt}</p>
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <label for="product-page-price">Quantidade</label>
-                        <input className="product-page-price" type="number" value="1" min="1" max="99" />
-                        <input type="submit" value="adicionar" />
+                        <input className="product-page-price" type="number" min="1" max={product.qnt} onChange={(e) => setQnt(e.target.value)} />
+                        <input  type="submit" value="adicionar" />
                     </form>
 
                 </div>

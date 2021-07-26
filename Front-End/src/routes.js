@@ -31,7 +31,7 @@ const Routes = () => {
                 <Route path={'/recover'} exact component={RecoverPassword} />
                 <Route path={'/signUp'} exact component={ SignUp } />
                 <Route path={'/adminList'} exact component={ AdminList } />
-                <Route path={'/adminList'} exact component={ AdminProduct } />
+                <Route path={'/adminProduct'} exact component={ AdminProduct } />
                 <Route path={'/sales'} exact component={ Sales } />
             </Switch>
         </BrowserRouter>
