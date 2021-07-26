@@ -30,4 +30,4 @@ const UserSchema = new mongoose.Schema(
 )
 const User = BaseUser.discriminator('User', UserSchema);
 
-module.exports = {AdminUser, User};
+module.exports = {AdminUser, BaseUser, User};
