@@ -53,7 +53,7 @@ let transporter = nodemailer.createTransport({
 const router = express.Router();
 router.route('/products')
   .get(async (request, response) => {
-    products = await Product.find().exec();
+    products = await Product.find({}, '_id name qnt price').exec();
     response.status(200).send(products);
   })
   .post(async (request, response) => {
@@ -64,7 +64,7 @@ router.route('/products')
 router.route('/products/:id')
   .get(async (request, response) => {
     const id = mongoose.Types.ObjectId(request.params.id);
-    product = await Product.findById(id).exec();
+    product = await Product.findById(id, '_id name qnt price description').exec();
     if (!product) {
       response.status(404).send()
     }
@@ -72,9 +72,10 @@ router.route('/products/:id')
   })
   .put(async (request, response) => {
     const id = mongoose.Types.ObjectId(request.params.id);
+    update = req.body
     // IMPROVEMENT: validate body
     // IMPROVEMENT: return 201 status code if product is created
-    product = await Product.findByIdAndUpdate(id, request.body, {new: true, upsert: true}).exec();
+    product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price}}, {new: true, upsert: true}).exec();
     if (!product) {
       response.status(404).send()
     }
@@ -109,13 +110,14 @@ router.route('/products/:id')
 // TODO: allow client to manipulate admin users too
 router.route('/users')
   .get(async (request, response) => {
-    users = await User.find().exec();
+    users = await User.find({}, "_id email name phone").exec();
     response.status(200).send(users);
   })
   .post(async (request, response) => {
     // IMPROVEMENT: validate body
     user = request.body;
-    user.password = cryptPassword(user.password);
+    user.password = await cryptPassword(user.password);
+    console.log(`user password is ${user.password}`);
     await User.create(user);
     response.status(201).send(user);
   })
@@ -124,7 +126,7 @@ router.route('/users/:id')
     const id = mongoose.Types.ObjectId(request.params.id);
     // IMPROVEMENT: handle Mongoose error and return 404 status code if product does not exist
     try {
-      user = await User.findById(id).exec();
+      user = await User.findById(id, "_id email name phone creditCards").exec();
     }
     catch (error) {
       response.status(500).send(error);
