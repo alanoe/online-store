@@ -12,11 +12,23 @@ const UserProfile = (props) => {
 
     const id = props.location.state.id;
 
-    const [usuario, setUsuario] = useState({});
+    const[address, setAddress] = useState();
+    const[name, setName] = useState();
+    const[email, setEmail] = useState();
+    const[CEP, setCEP] = useState();
+    const[street, setStreet] = useState();
+    const[houseNumber, setHouseNumber] = useState();
+    const[city, setCity] = useState();
+    const[state, setState] = useState();
+    const[phone, setPhone] = useState();
+    
 
     const fetchData = async () => {
         const response = await api.get('/user/' + id);
-        setUsuario(response.data);
+        setName(response.data.name);
+        setEmail(response.data.email);
+        setAddress(response.data.address);
+        setPhone(response.data.phone);
     }
     useEffect(() => {
         fetchData();
@@ -35,27 +47,27 @@ const UserProfile = (props) => {
                     <form action="">
 
                         <label for="user-name">Nome de usuário </label>
-                        <input className="user-name" type="text" value={usuario.name} disabled />
+                        <input className="user-name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
 
                         <label for="user-email">Email </label>
-                        <input className="user-email" type="email" value={usuario.email} disabled />
+                        <input className="user-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                         {!Admin && (
                             <>
                                 <label for="user-cep">CEP </label>
-                                <input className="user-cep" type="text" value={usuario.cep} disabled />
+                                <input className="user-cep" type="text" value={CEP} />
 
                                 <label for="user-street">Rua </label>
-                                <input className="user-forms-element" className="user-street" type="text" value={usuario.rua} disabled />
+                                <input className="user-forms-element" className="user-street" type="text" value={street} />
                                 <label for="user-house-number">Número </label>
-                                <input className="user-forms-element" className="user-house-number" type="text" value={usuario.numero} disabled />
+                                <input className="user-forms-element" className="user-house-number" type="text" value={houseNumber} />
                                 <label for="user-city">Cidade</label>
-                                <input className="user-forms-element" className="user-city" type="text" value={usuario.cidade} disabled />
+                                <input className="user-forms-element" className="user-city" type="text" value={city} />
                             </>
                         )}
 
                         <label>Estado</label>
-                        <select className="user-state" value={usuario.estado} disabled>
+                        <select className="user-state" value={state}>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AM">AM</option>
@@ -85,7 +97,7 @@ const UserProfile = (props) => {
                         </select>
 
                         <label for="user-phone">Telefone</label>
-                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={usuario.telefone} disabled />
+                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={phone} onChange={(e) => setPhone(e.target.value)}/>
 
                         <input type="submit" value="Editar" />
                     </form>

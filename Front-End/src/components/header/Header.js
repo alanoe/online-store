@@ -8,7 +8,7 @@ import LogoOvo from "../../img/ovo-branco.png";
 
 
 function Header({Login,Admin}){
-  console.log("header admin:"+Admin)
+  
   const [login, setLogin] = useState();
   const [admin, setAdmin] = useState();
 

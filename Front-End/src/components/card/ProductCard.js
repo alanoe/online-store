@@ -3,7 +3,6 @@ import React from 'react';
 import './productCard.css'
 
 const ProductCard = (props) => {
-    console.log("Card nome: " + props.name + "price: " + props.price)
     return(
         <div className="product-container">
             <img className="product-img" src={props.image} />

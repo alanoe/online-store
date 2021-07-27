@@ -1,80 +1,87 @@
 import React,{useEffect,useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 // our imports
 import './adminProduct.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
-import SearchBar from '../../../components/searchBar/SearchBar'
-
-// images
-import Mae from "../../../img/unicornioMae.jpg"
-import Unicornio from "../../../img/unicornio.jfif"
-
-/*
-let product = {
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    descriptionMom:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-};
-*/
+import SearchBar from '../../../components/searchBar/SearchBar';
 
 
 const Product = (props) => {
     
+    let history = useHistory();
+
     const id = props.location.state.id
     /*const id = new URLSearchParams(useLocation().search).get("id")*/
-    const [product, setproduct] = useState({});
-    const [qnt,setQnt] = useState();
+    //const [product, setproduct] = useState({});
+    const [name, setName] = useState();
+    const [price, setPrice] = useState();
+    const [qnt, setQnt] = useState();
+    const [description, setDescription] = useState();
 
     const fetchData = async () => {
         const response = await api.get('/products/' + id);
-        setproduct(response.data);
+        //setproduct(response.data);
+        setName(response.data.name);
+        setPrice(response.data.price);
+        setQnt(response.data.qnt);
+        setDescription(response.data.description);
     }
     useEffect(() => {
         fetchData();
     }, []);
 
     const onSubmit = (e) => {
-        // prevent page change
+
         e.preventDefault()
+
+        const product = {
+            name: e.target.name.value,
+            price: e.target.price.value,
+            qnt: e.target.qnt.value,
+            description: e.target.description.value
+        }
+        console.log(product);
         // validate form
         async function send(){
-            await api.post('/cart/products', product ) 
+            //await api.put('/products/' + id, product ) 
         };
         send();
-        alert("produto adicionado ao carrinho");
-       
+        alert("produto alterado");
+
+
+        history.push('/adminList');
       }
     
     return(
         <div>
-            <Header />
-            <SearchBar />
-            <div className="overall">
-            <div className="product">
-                <div className="picture">
-                    <img className="product-page-img" src={product.img} />
-                    <div className="description">{product.description}</div>                   
-                </div>
-                <div className="price">
-
-                    <div className="name">
-                        <h2>{product.name}</h2>
-                        <p className="id">{product.id}</p>
-                    </div>
-
-                    <h2 className="value">R${parseInt(product.price).toFixed(2)}</h2>
-                    <p className="product-page-qnt">Quantidade disponivel: {product.qnt}</p>
-                    <form onSubmit={onSubmit}>
-                        <label for="product-page-price">Quantidade</label>
-                        <input className="product-page-price" type="number" min="1" max={product.qnt} onChange={(e) => setQnt(e.target.value)} />
-                        <input  type="submit" value="adicionar" />
-                    </form>
-
-                </div>
+        <Header Admin={true} />
+        <SearchBar Admin={true}/>
+        <div className="profile-container">
+            <div className="info-edit">
+                <h1>Informações pessoais</h1>
             </div>
-           
+
+            <div className="user-profile">
+                <form onSubmit={onSubmit}>
+
+                    <label for="product-name">Nome do Produto </label>
+                    <input className="product-name" type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+
+                    <label for="product-email">Preço </label>
+                    <input className="product-proce" type="number" id="price" value={price} onChange={(e) => setPrice(e.target.value)} min="0"/> 
+
+                    <label for="product-email">Quantidade </label>
+                    <input className="product-qtd" type="number" id="qnt" value={qnt} onChange={(e) => setQnt(e.target.value)} min="0" />                                      
+
+                    <label for="product-phone">Descrição </label>
+                    <input className="product-description" type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+
+                    <input type="submit" value="Salvar Aleterações" />
+                </form>
+            </div>
         </div>
-        </div>
+    </div>
     );
 }
 export default Product;

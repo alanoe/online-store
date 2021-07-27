@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const AddProductButton = ({Admin, products}) => {
+const AddProductButton = ({Admin, products,cart}) => {
   const [admin, setAdmin] = useState(Admin);
 
   return (
-     <div>
+     <div>          
          {
            admin == true ? (
               <Link className="link-sales" to="./sales" ><i class="fas fa-chart-line"></i></Link>

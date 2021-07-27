@@ -66,11 +66,11 @@ const AddProductForm = ({onAddReq}) => {
             </div>
             <div className='form-field'>
               <label>Preço</label>
-              <input type='number' name='price' value={ price} onChange={(e) => setPrice(e.target.value)}></input>
+              <input type='number' name='price' min="0" value={ price} onChange={(e) => setPrice(e.target.value)}></input>
             </div>
             <div className='form-field'>
               <label>Quantidade em estoque</label>
-              <input type='number' name=' qnt' value={qnt} onChange={(e) => setQnt(e.target.value)}></input>
+              <input type='number' name=' qnt' min="0" value={qnt} onChange={(e) => setQnt(e.target.value)}></input>
             </div>
             <div className='form-field'>
               <label>Imagem</label>
