@@ -6,6 +6,7 @@ import './userProfile.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+//import { set } from 'mongoose';
 
 
 const UserProfile = (props) => {
@@ -14,6 +15,7 @@ const UserProfile = (props) => {
     let Admin = props.location.state.admin;
 
     const id = props.location.state.id;
+    console.log(id);
 
     const[address, setAddress] = useState();
     const[name, setName] = useState();
@@ -27,29 +29,36 @@ const UserProfile = (props) => {
     
 
     const fetchData = async () => {
-        const response = await api.get('/user/' + id);
+        const response = await api.get('/users/' + id);
         setName(response.data.name);
         setEmail(response.data.email);
         setAddress(response.data.address);
         setPhone(response.data.phone);
+        
     }
-
+    
     useEffect(() => {
         fetchData();
     }, []);
 
+    //
+    /*
+    var addressParts = address.split("$")
+    setCEP(addressParts[0]);
+    setStreet(addressParts[1]);
+    setHouseNumber(addressParts[2]);
+    setCity(addressParts[3]);
+    setState(addressParts[4])
+    */
     const onSubmit = (e) => {
 
         e.preventDefault()
 
-        setAddress()
-
         const user = {
             name: e.target.name.value,
             email: e.target.email.value,
-            address: address,
+            address: e.target.CEP.value +"$"+ e.target.street.value +"$"+ e.target.houseNumber.value +"$"+ e.target.city.value +"$"+ e.target.state.value,
             phone:e.target.phone.value
-
         }
 
         console.log(user);
@@ -65,7 +74,6 @@ const UserProfile = (props) => {
       }
     
 
-    console.log(Admin)
     return (
         <div>
             <Header Admin={Admin} />

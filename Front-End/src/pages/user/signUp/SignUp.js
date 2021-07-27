@@ -22,6 +22,7 @@ const SignUp = () => {
     const[password, setPassword] = useState();
 
     const onSubmit  =  (e) =>{
+        
         var address = CEP + "$" +street + "$"+ houseNumber + "$"+ city + "$"+ state
         var usuario = {name:name,email:email,address:address,phone:phone,password:password}
 

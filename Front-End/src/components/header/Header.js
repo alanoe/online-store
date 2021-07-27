@@ -57,7 +57,7 @@ function Header({Login,Admin}){
                   pathname: '/profile',
                   state: {
                     admin: Admin,
-                    /*id: _id*/
+                    id: "6100976e7a7b3da076c0b78d"
                   }
                }} >
               <i class="fas fa-user"></i></Link>
