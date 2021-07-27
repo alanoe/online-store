@@ -38,7 +38,7 @@ const Product = (props) => {
         e.preventDefault()
         // validate form
         async function send(){
-            await api.post('/cart', product ) 
+            await api.post('/cart/products', product ) 
         };
         send();
         alert("produto adicionado ao carrinho");

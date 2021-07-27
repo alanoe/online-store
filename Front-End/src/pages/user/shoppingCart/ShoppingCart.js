@@ -4,13 +4,14 @@ import React from 'react';
 import './shoppingCart.css';
 import Card from '../../../components/card/CartCard'
 import Header from '../../../components/header/Header';
+import api from './../../../Api'
 
 // images
 import Unicornio from "../../../img/unicornio.jfif";
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const api=true;
+
 /*
 var productList = [
   {name: 'Ovo de unicornio', value: 4200.00, qtd:1, image: Unicornio},
@@ -28,12 +29,14 @@ const ShoppingCart = () => {
   const [productList, setProductList] = useState ([]);
 
   const fetchData = async () => {
-      const response = await api.get('/Cart/' + id);
+      const response = await api.get('/Cart/');
       setProductList(response.data);
   }
   useEffect (() => {
       fetchData();
   }, []);
+
+  console.log(productList)
 
   return(
     <div>

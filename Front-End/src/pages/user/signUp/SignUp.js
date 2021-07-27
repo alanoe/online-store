@@ -1,11 +1,38 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 // our imports
 import './signUp.css';
 import Header from '../../../components/header/SignUpHeader';
+import api from './../../../Api'
+import { useHistory } from 'react-router-dom';
 
 
 const SignUp = () => {
+
+    let history = useHistory();
+
+    const[name, setName] = useState();
+    const[email, setEmail] = useState();
+    const[CEP, setCEP] = useState();
+    const[street, setStreet] = useState();
+    const[houseNumber, setHouseNumber] = useState();
+    const[city, setCity] = useState();
+    const[state, setState] = useState();
+    const[phone, setPhone] = useState();
+    const[password, setPassword] = useState();
+
+    const onSubmit  =  (e) =>{
+        var address = CEP + " " +street + " "+ houseNumber + " "+ city + " "+ state
+        var usuario = {name:name,email:email,address:address,phone:phone,password:password}
+
+        async function send(){await api.post('/users', usuario) };
+        //send();
+
+        alert("Usuário criado com sucesso" + password)
+
+        history.push('/login');
+    }
+
     return(
         <div>
             <Header />
@@ -14,27 +41,27 @@ const SignUp = () => {
                     <h2>Criação de conta</h2>
                 </div>
                 <div className="cadastro-form">
-                    <form action="">
+                    <form onSubmit={onSubmit}>
                         <label for="user-name">Nome de usuário </label>
-                        <input className="user-name"type="text" />
+                        <input className="user-name"type="text" required value={name} onChange={(e) => setName(e.target.value)}/>
 
                         <label for="user-email">Email </label>
-                        <input className="user-email" type="email" />
+                        <input className="user-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                         <label for="user-cep">CEP </label>
-                        <input className="user-cep" type="text" />
+                        <input className="user-cep" type="text" required value={CEP} onChange={(e) => setCEP(e.target.value)}/>
 
                         <label for="user-street">Rua </label>
-                        <input className="user-street" type="text" />
+                        <input className="user-street" type="text" required value={street} onChange={(e) => setStreet(e.target.value)}/>
 
                         <label for="user-house-number">Número </label>
-                        <input className="user-house-number" type="text" />
+                        <input className="user-house-number" type="text" required value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
 
                         <label>Cidade</label>
-                        <input type="text" />
+                        <input className="user-city" type="text" required value={city} onChange={(e) => setCity(e.target.value)}/>
 
                         <label>Estado</label>
-                        <select>
+                        <select required value={state} onChange={(e) => setState(e.target.value)}>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AM">AM</option>
@@ -64,7 +91,10 @@ const SignUp = () => {
                         </select>
                         
                         <label for="user-phone">Telefone</label>
-                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" />
+                        <input className="user-phone" required type="text" placeholder="(xx) xxxxx-xxxx" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+
+                        <label for="password">Password</label>
+                        <input className="user-password" required type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                         <input type="submit" value="Cadastrar" />
                     </form>

@@ -5,34 +5,21 @@ import './adminProduct.css'
 
 import Header from '../../../components/header/Header';
 import api from './../../../Api'
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
 
 
 const AddProductForm = ({onAddReq}) => {
 /*--------------------------------------------------------------*/
-/*  
-const id = new URLSearchParams(useLocation().search).get("id")
+  let history = useHistory();    
 
-    const [product, setproduct] = useState({});
-
-    const fetchData = async () => {
-        const response = await api.get('/product/' + id);
-        setproduct(response.data);
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);*/
-
-    const [name, setName] = useState()
-    const [price, setPrice] = useState()
-    const [description, setDescription] = useState()
-    const [ qnt, setQnt] = useState()
-
-    /*onAddReq({name, description, price,  qnt})*/
+  const [name, setName] = useState()
+  const [price, setPrice] = useState()
+  const [description, setDescription] = useState()
+  const [ qnt, setQnt] = useState()
 
   const onSubmit = (e) => {
     // prevent page change
-    e.preventDefault()
+    //e.preventDefault()
     // validate form
     if (! name) {
       alert('Informe o nome do produto')
@@ -52,9 +39,8 @@ const id = new URLSearchParams(useLocation().search).get("id")
 
     alert("enviado com sucesso")
 
-    return(
-      <Redirect to="/adminList"></Redirect>
-    )
+    history.push('/adminList')
+    
   }
 
 
