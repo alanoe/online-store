@@ -72,14 +72,20 @@ router.route('/products/:id')
   })
   .put(async (request, response) => {
     const id = mongoose.Types.ObjectId(request.params.id);
-    update = req.body
+    
+    update = request.body
+    
     // IMPROVEMENT: validate body
     // IMPROVEMENT: return 201 status code if product is created
-    product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price}}, {new: true, upsert: true}).exec();
+    product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt}}, {new: true, upsert: true}).exec();
+    
     if (!product) {
       response.status(404).send()
     }
+    
     await product.save();
+    
+    
     /*
     if (product) {
       product = request.body;

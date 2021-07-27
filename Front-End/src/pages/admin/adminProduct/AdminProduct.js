@@ -41,10 +41,10 @@ const Product = (props) => {
             qnt: e.target.qnt.value,
             description: e.target.description.value
         }
-        console.log(product);
+        
         // validate form
         async function send(){
-            //await api.put('/products/' + id, product ) 
+            await api.put('/products/' + id, product) 
         };
         send();
         alert("produto alterado");

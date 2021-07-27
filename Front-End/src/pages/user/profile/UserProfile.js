@@ -5,9 +5,12 @@ import { Link, useLocation } from 'react-router-dom';
 import './userProfile.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 const UserProfile = (props) => {
+    let history = useHistory();
+
     let Admin = props.location.state.admin;
 
     const id = props.location.state.id;
@@ -30,9 +33,37 @@ const UserProfile = (props) => {
         setAddress(response.data.address);
         setPhone(response.data.phone);
     }
+
     useEffect(() => {
         fetchData();
     }, []);
+
+    const onSubmit = (e) => {
+
+        e.preventDefault()
+
+        setAddress()
+
+        const user = {
+            name: e.target.name.value,
+            email: e.target.email.value,
+            address: address,
+            phone:e.target.phone.value
+
+        }
+
+        console.log(user);
+        // validate form
+        async function send(){
+            //await api.put('/users/' + id, user ) 
+        };
+        send();
+        alert("produto alterado");
+
+
+        history.push('/adminList');
+      }
+    
 
     console.log(Admin)
     return (
@@ -44,7 +75,7 @@ const UserProfile = (props) => {
                 </div>
 
                 <div className="user-profile">
-                    <form action="">
+                    <form onSubmit={onSubmit}>
 
                         <label for="user-name">Nome de usuário </label>
                         <input className="user-name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
@@ -55,19 +86,19 @@ const UserProfile = (props) => {
                         {!Admin && (
                             <>
                                 <label for="user-cep">CEP </label>
-                                <input className="user-cep" type="text" value={CEP} />
+                                <input className="user-cep" type="text" value={CEP} onChange={(e) => setCEP(e.target.value)}/>
 
                                 <label for="user-street">Rua </label>
-                                <input className="user-forms-element" className="user-street" type="text" value={street} />
+                                <input className="user-forms-element" className="user-street" type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
                                 <label for="user-house-number">Número </label>
-                                <input className="user-forms-element" className="user-house-number" type="text" value={houseNumber} />
+                                <input className="user-forms-element" className="user-house-number" type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
                                 <label for="user-city">Cidade</label>
-                                <input className="user-forms-element" className="user-city" type="text" value={city} />
+                                <input className="user-forms-element" className="user-city" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
                             </>
                         )}
 
                         <label>Estado</label>
-                        <select className="user-state" value={state}>
+                        <select className="user-state" value={state} onChange={(e) => setState(e.target.value)}>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AM">AM</option>
