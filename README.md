@@ -181,11 +181,11 @@ FrontEnd:
 >> npm run build
 >> npm run start
 ```
-BackEnd:
+BackEnd(É necessário ter MongoDB instalado)):
 ```
 >> npm i
->> npm run build
->> npm run start
+>> node src/server.js
+
 ```
 Para entrar como usuário basta ir na página de login e clicar em "Login"
 Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
