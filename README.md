@@ -114,13 +114,14 @@ Também será informado a quantia total de vendas, o valor médio da compra e a 
 
 ## Plano de teste
 
-Testamos manualmente clincando em cada link e seguindo nosso diagrama de navegação.
+Os testes foram feitos manualmente, acessando links e testando inputs:
+
 
 ## Resultados de teste
 Links funcionando.
 
 ## Processo de Execução
-Após baixado o repositório do github é necessário apenas executar os comandos a seguir pra visualizar a aplicaçõa:
+Após baixado o repositório do github é necessário apenas executar os comandos a seguir pra visualizar a aplicação:
 ```
 >> npm i
 >> npm run build
@@ -128,7 +129,9 @@ Após baixado o repositório do github é necessário apenas executar os comando
 ```
 Para entrar como usuário basta ir na página de login e clicar em "Login"
 Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
+
 ## Problemas
-Como não tinhamos uma base de dados criamos uma lista de produtos Hardcoded para poder gerar uma página inicial com uma lista de produtos.
+- No carrinho, ao tentar listar os produtos, embora sajam listados apenas uma vez, eles são chamados mais de uma vez, causando o total ser um valor errado. Não soubemos como corrigir, esse erro ocorre até com um array de produtos hardcoded.
+- A imagem do produto não foi implementada.
 
 ## Comentários

@@ -1,25 +1,16 @@
 import React,{useEffect,useState} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 // our imports
 import './product.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 
-// images
-import Mae from "../../../img/unicornioMae.jpg"
-import Unicornio from "../../../img/unicornio.jfif"
-
-/*
-let product = {
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    descriptionMom:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-};
-*/
-
 
 const Product = (props) => {
     
+    let history = useHistory();
+
     const id = props.location.state.id
     /*const id = new URLSearchParams(useLocation().search).get("id")*/
     const [product, setproduct] = useState({});
@@ -37,12 +28,14 @@ const Product = (props) => {
         // prevent page change
         e.preventDefault()
         // validate form
+        let res;
         async function send(){
-            await api.post('/cart/products', product ) 
+            await api.post('/cart', {productID:id,qnt:qnt,price:product.price,name:product.name} ) 
         };
         send();
         alert("produto adicionado ao carrinho");
-       
+        
+        history.push('/')
       }
     
     return(
@@ -62,11 +55,11 @@ const Product = (props) => {
                         <p className="id">{product.id}</p>
                     </div>
 
-                    <h2 className="value">R${parseInt(product.price).toFixed(2)}</h2>
+                    <h2 className="value">R${parseFloat(product.price).toFixed(2)}</h2>
                     <p className="product-page-qnt">Quantidade disponivel: {product.qnt}</p>
                     <form onSubmit={onSubmit}>
                         <label for="product-page-price">Quantidade</label>
-                        <input className="product-page-price" type="number" min="1" max={product.qnt} onChange={(e) => setQnt(e.target.value)} />
+                        <input className="product-page-price" type="number" required min="1" max={product.qnt} onChange={(e) => setQnt(e.target.value)} />
                         <input  type="submit" value="adicionar" />
                     </form>
 

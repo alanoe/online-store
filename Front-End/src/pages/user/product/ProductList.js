@@ -8,22 +8,7 @@ import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 import Card from '../../../components/card/ProductCard'
 
-import Unicornio from "../../../img/unicornio.jfif";
 
-
-/*
-var productList = [
-  {name: 'Ovo da angola', value: 4200.00, qtd:1, image: Unicornio},
-  {name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
-  {name: 'Ovo de BRUNO', value: 1000.00, qtd: 5, image: Unicornio},
-  {name: 'Ovo de unicornio', value: 4200.00, qtd:1, image: Unicornio},
-  {name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
-  {name: 'Ovo de Savio', value: 1000.00, qtd: 5, image: Unicornio},
-  {name: 'Ovo de unicornio', value: 4200.00, qtd:1, image: Unicornio},
-  {name: 'Ovo de ET', value: 3600.00, qtd:3, image: Unicornio},
-  {name: 'Ovo de Savio', value: 1000.00, qtd: 5, image: Unicornio}
-];
-*/
 const ProductList = ({search}) => {  
 
   const [productList, setProductList] = useState ([]);
@@ -37,8 +22,6 @@ const ProductList = ({search}) => {
       fetchData();
   }, []);
 
-  console.log("oi -----------")
-  console.log(productList)
 
   return(
         <div>

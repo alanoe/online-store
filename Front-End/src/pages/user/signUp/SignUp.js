@@ -27,7 +27,7 @@ const SignUp = () => {
         var usuario = {name:name,email:email,address:address,phone:phone,password:password}
 
         async function send(){await api.post('/users', usuario) };
-        //send();
+        send();
 
         alert("Usuário criado com sucesso" + password)
 

@@ -12,7 +12,9 @@ const {cryptPassword, comparePassword} = require('./crypt');
 const database = require('./database');
 const Product = require('./models/products');
 const Purchase = require('./models/purchases');
+const Cart = require('./models/cart');
 const {AdminUser,BaseUser,User} = require('./models/users');
+const { findById, findByIdAndUpdate } = require('./models/products');
 
 // set up application
 const app = express();
@@ -30,6 +32,7 @@ app.use(session({
   ttl: 7 * 24 * 60 * 60 // 7 days time-to-live
 }));
 function authorize(username, password) {
+  console.log("oiiiee: " + username)
   const user = BaseUser.find({email: username});
   return comparePassword(password, user.email);
 }
@@ -269,12 +272,46 @@ router.route('/resetpw')
   });
 
 router.route('/cart')
+  .get(async (request,response) =>{
+    cart = await Cart.find({}, '_id name qnt price').exec();
+    response.status(200).send(cart);
+  })
+  .post(async (request, response) => {
+    // IMPROVEMENT: validate body
+    console.log(request.body)
+    cart = await Cart.create(request.body);
+    response.status(201).send(cart);
+  })
+  .delete(async (request,response) => {
+    cart = await Cart.deleteMany()
+  })
+  .put(async (request,response) => {
+    console.log("oiee")
+    cart = await Cart.find({}, 'productID name qnt price').exec();
+    products = await Product.find({}, '_id name qnt price').exec();
+    
+    cart.forEach(async cartProduct => {
+      products.forEach(async product =>{
+        if(cartProduct.productID == product._id){
+            if(cartProduct.qnt <= product.qnt){
+              product.qnt -= cartProduct.qnt;
+              await Product.findByIdAndUpdate(product._id,product).exec()
+            }            
+        }
+      })
+    })
+  })
+
+/*
+router.route('/cart')
   .get(async (request, response) => {
+    console.log("entrei no cart\n")
     if (!request.session.cart) {
-      request.session.cart = {}
+      request.session.cart = []
       await request.session.save();
     }
-    response.status(200).send(cart);
+    console.log(request.session.cart)
+    response.status(200).send(request.session.cart);
   })
   .delete(async (request, response) => {
     request.session.cart = {}
@@ -291,18 +328,21 @@ router.route('/cart/products')
   })
   .post(async (request, response) => {
     productId = request.body["id"];
-    if (itemId in request.session.cart) {
+    console.log(request.body);
+    /*if (productId in request.session.cart) {
       req.session.cart[productId].qnt += request.body["qnt"];
     }
     else {
       req.session.cart[productId].qnt = request.body["qnt"];
     }
+    
     await request.session.save();
+    
     response.status(201).send(request.session.cart);
   })
   .delete(async (request, response) => {
     productId = request.body["id"];
-    if (!(itemId in req.session.cart)) {
+    if (!(productId in req.session.cart)) {
       response.status(404).send();
       return;
     }
@@ -310,6 +350,8 @@ router.route('/cart/products')
     await request.session.save();
     response.status(200).send();
   });
+*/
+
 
 router.route('/purchases/:id')
   .get(async (request, response) => {

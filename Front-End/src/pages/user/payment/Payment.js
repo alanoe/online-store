@@ -4,15 +4,29 @@ import { useHistory } from "react-router-dom";
 // our imports
 import './payment.css';
 import Header from '../../../components/header/Header';
+import api from './../../../Api'
 
 
-const Payment = () => {
+const Payment = (props) => {
+
+    const price = props.location.state.price
+
     let history = useHistory();
 
     const onSubmit = (e) => 
     {
         e.preventDefault()
+
+        async function send(){
+            await api.put('/cart');                
+        };
+        async function remove(){
+            await api.delete('/cart');                
+        };
+        send();        
+
         alert("Compra confirmada!")
+        remove();
         history.push("/")
     }
 
@@ -26,17 +40,17 @@ const Payment = () => {
                 
                 <div className="value-bar">
                     <h3>Valor total:</h3>
-                    <p className="total-value">R$1200.00</p>            
+                    <p className="total-value">R${price.toFixed(2)}</p>            
                 </div>
 
                 <div className="payment-options">
                     <h3>Forma de pagamento:</h3>
                     
                     <select className="pay-select">
-                        <option>1 x R$1200.00</option>
-                        <option>2 x R$600.00</option>
-                        <option>3 x R$400.00</option>
-                        <option>6 x R$200.00</option>
+                        <option>1 x R${price.toFixed(2)}</option>
+                        <option>2 x R${(price/2).toFixed(2)}</option>
+                        <option>3 x R${(price/3).toFixed(2)}</option>
+                        <option>6 x R${(price/6).toFixed(2)}</option>
                     </select>
                 </div>
 
