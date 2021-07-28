@@ -15,7 +15,6 @@ const UserProfile = (props) => {
     let Admin = props.location.state.admin;
 
     const id = props.location.state.id;
-    console.log(id);
 
     const[address, setAddress] = useState();
     const[name, setName] = useState();
@@ -41,10 +40,12 @@ const UserProfile = (props) => {
         fetchData();
     }, []);
 
+    
     //
     /*
-    var addressParts = address.split("$")
-    setCEP(addressParts[0]);
+    var addressParts = '' + address;
+    addressParts = addressParts.split("$")[0]
+    setCEP(addressParts.split("$")[0]);
     setStreet(addressParts[1]);
     setHouseNumber(addressParts[2]);
     setCity(addressParts[3]);
@@ -54,6 +55,7 @@ const UserProfile = (props) => {
 
         e.preventDefault()
 
+        console.log("oiieeee")
         const user = {
             name: e.target.name.value,
             email: e.target.email.value,
@@ -86,27 +88,27 @@ const UserProfile = (props) => {
                     <form onSubmit={onSubmit}>
 
                         <label for="user-name">Nome de usuário </label>
-                        <input className="user-name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                        <input className="user-name" type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}/>
 
                         <label for="user-email">Email </label>
-                        <input className="user-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="user-email" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
                         {!Admin && (
                             <>
                                 <label for="user-cep">CEP </label>
-                                <input className="user-cep" type="text" value={CEP} onChange={(e) => setCEP(e.target.value)}/>
+                                <input className="user-cep" type="text" id="CEP" value={CEP} onChange={(e) => setCEP(e.target.value)}/>
 
                                 <label for="user-street">Rua </label>
-                                <input className="user-forms-element" className="user-street" type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
+                                <input className="user-forms-element" id="street" className="user-street" type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
                                 <label for="user-house-number">Número </label>
-                                <input className="user-forms-element" className="user-house-number" type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
+                                <input className="user-forms-element"  id="houseNumber" className="user-house-number" type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
                                 <label for="user-city">Cidade</label>
-                                <input className="user-forms-element" className="user-city" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
+                                <input className="user-forms-element" id="city" className="user-city" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
                             </>
                         )}
 
                         <label>Estado</label>
-                        <select className="user-state" value={state} onChange={(e) => setState(e.target.value)}>
+                        <select className="user-state" id="state" value={state} onChange={(e) => setState(e.target.value)}>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AM">AM</option>
@@ -136,7 +138,7 @@ const UserProfile = (props) => {
                         </select>
 
                         <label for="user-phone">Telefone</label>
-                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                        <input className="user-phone" type="text" placeholder="(xx) xxxxx-xxxx" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)}/>
 
                         <input type="submit" value="Editar" />
                     </form>

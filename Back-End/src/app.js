@@ -135,7 +135,7 @@ router.route('/users/:id')
     const id = mongoose.Types.ObjectId(request.params.id);
     // IMPROVEMENT: handle Mongoose error and return 404 status code if product does not exist
     try {
-      user = await User.findById(id, "_id email name phone creditCards").exec();
+      user = await User.findById(id, "_id email name address phone creditCards").exec();
     }
     catch (error) {
       response.status(500).send(error);

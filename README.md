@@ -17,11 +17,11 @@ O sistema é um site cujo objetivo é a venda de ovos de vários tipos, desde o 
 - O sistema deve permitir que um administrador cadastre outro. As informações armazenadas sobre um administrador são: nome, telefone, e-mail, senha, e um ID, que não é visível ao usuário;
 - O sistema deve permitir que um cliente se cadastre no mesmo. As informações armazenadas sobre um cliente são: nome, endereço, telefone, e-mail, senha, e um ID, que não é visível ao usuário;
 - O sistema deve permitir que o administrador cadastre, consulte, atualize e remova produtos. As informações armazenadas sobre um produto são: ID, nome, foto, descrição, preço, quantidade em estoque e quantidade vendida (informação disponível somente para o administrador). O sistema possui um tipo de produto: *o ovo*, que pode ser de diversos tipos;
-    - Cada *ovo* tem sua descrição, preço e quantidade associados, além de conter a descrição da mãe (funcionalidade do nosso produto).
+    - Cada *ovo* tem sua descrição, preço e quantidade associados.
 - O sistema deve permitir a venda dos produtos. Para cada produto vendido, a *quantidade vendida* deve ser incrementada e *quantidade em estoque* decrementada conforme a quantidade vendida. Uma venda não pode ser realizada caso não haja a quantidade em estoque necessária;
 - O sistema deve prover a abstração de um carrinho de compras, que contém os produtos selecionados pelo usuário para serem comprados.
 O usuário poderá listar os produtos nesse carrinho, assim como adicionar e remover produtos. A lista de produtos no carrinho contém o nome, foto, preço e quantidade selecionada de cada produto. Além disso, deve ser mostrado o preço total associado a todos os itens. Os carrinhos serão limpos apenas quando a compra for concluída ou quando o usuário requisitá-lo;
-- A compra pode ser paga com cartão de crédito (qualquer número é aceito pelo sistema), boleto ou pix;
+- A compra pode ser paga com cartão de crédito (qualquer número é aceito pelo sistema);
 - O sistema deve permitir o histórico de compras realizadas pelo usuário (futura implementação);
 - O sistema deve atender requisitos de acessibilidade e fornecer boa usabilidade. O sistema deve ser responsivo.
 
@@ -111,17 +111,77 @@ Também será informado a quantia total de vendas, o valor médio da compra e a 
 
 ## Comentários sobre o código
 
-
 ## Plano de teste
 
 Os testes foram feitos manualmente, acessando links e testando inputs:
 
+- Ir para a página de Login: ao iniciar o site (página de produtos, a mesma do usuário logado), clicar em Login no Header;
+- Ir para a página de Criar novo usuário: clicar em Cadastrar na página de Login;
+- Criar nova conta de usuário: Na página de usuário, preencher os dados e clicar em Cadastrar.
+
+**Testes das páginas do Usuário**
+
+Depois de fazer login:
+- Ir para a página do perfil: depois de logado, clicar no símbolo de pessoa no header;
+- Alterar informações do perfil: ao entrar na página de perfil, as informações do usuário são listadas e o usuário pode alterá-las, ao clicar em Editar, as informações são salvas.
+- Ir para a página do produto: clicar na box do produto desejado;
+- Adicionar produto no carrinho: na página do produto, selecionar uma quantidade entre 1 e quantidade máxima;
+- Ir para o carrinho: clicar no ícone de carrinho no canto superior direito da tela;
+- Ir para a página de compra: clicar no botão Comprar no fim da página de carrinho;
+- Realizar pagamento: Na página de compra, preencher os seus dados de cartão e clicar em realizar compra;
+- Estoque diminui ao realizar compra: Ir na página do produto que acabou de ser comprado e vizualizar o estoque reduzido do valor da compra;
+
+**Testes das páginas do Administrador**
+
+Depois de fazer login:
+- Ir para a página do perfil: depois de logado, clicar no símbolo de pessoa no header;
+- Alterar informações do perfil: ao entrar na página de perfil, as informações do usuário são listadas e o usuário pode alterá-las, ao clicar em Editar, as informações são salvas.
+- Ir para a página do produto: clicar no produto na página inicial e entrar na página do produto (visão admin);
+- Alterar as informações do produto: estando na página do produto (versão admin), editar as informações do produto e clicar em Salvar Alterações;
+- Ir para a página de inserção de produto: clicar no '+' da página inicial do administrador;
+- Inserir produtos na loja: preencher os dados do produto;
+- Ir para a página de relatório: clicar no símbolo de planilha da página inicial do administrador;
 
 ## Resultados de teste
-Links funcionando.
+
+- Ir para a página de Login: OK
+- Ir para a página de Criar novo usuário: OK
+- Criar nova conta de usuário: OK
+
+**Testes das páginas do Usuário**
+
+Depois de fazer login:
+- Ir para a página do perfil: OK
+- Alterar informações do perfil: As informações são listadas, mas endereço não, devido a forma que o Backend foi implementado (salva uma string ao invés dos campos separados). Não foi testado clicar no botão Editar para ver se salva.
+- Ir para a página do produto: OK
+- Adicionar produto no carrinho: OK
+- Ir para o carrinho: OK
+- Ir para a página de compra: OK
+- Realizar pagamento: OK
+- Estoque diminui ao realizar compra: OK
+
+**Testes das páginas do Administrador**
+
+Depois de fazer login:
+- Ir para a página do perfil: OK
+- Alterar informações do perfil: As informações são listadas, mas endereço não, devido a forma que o Backend foi implementado (salva uma string ao invés dos campos separados). Não foi testado clicar no botão Editar para ver se salva.
+- Ir para a página do produto: OK
+- Alterar as informações do produto: OK
+- Ir para a página de inserção de produto: OK
+- Inserir produtos na loja: OK
+- Ir para a página de relatório: OK
+
 
 ## Processo de Execução
 Após baixado o repositório do github é necessário apenas executar os comandos a seguir pra visualizar a aplicação:
+
+FrontEnd:
+```
+>> npm i
+>> npm run build
+>> npm run start
+```
+BackEnd:
 ```
 >> npm i
 >> npm run build
@@ -131,7 +191,11 @@ Para entrar como usuário basta ir na página de login e clicar em "Login"
 Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
 
 ## Problemas
-- No carrinho, ao tentar listar os produtos, embora sajam listados apenas uma vez, eles são chamados mais de uma vez, causando o total ser um valor errado. Não soubemos como corrigir, esse erro ocorre até com um array de produtos hardcoded.
-- A imagem do produto não foi implementada.
+- No carrinho, ao tentar listar os produtos, embora sajam listados apenas uma vez, eles são chamados mais de uma vez, causando o total ser um valor errado. Não soubemos como corrigir, esse erro ocorre até com um array de produtos hardcoded;
+- A imagem do produto não foi implementada;
+- SearchBar não funciona;
+- Não foi implementado nada relacionado ao histórico de compras do usuário;
 
 ## Comentários
+- Havia Informações relacionadas com a mãe do ovo, mas resolvemos tirar elas.
+- A disciplina cobrava um crédito trabalho, porém, tanto suas atividades e o trabalho demandavam muito mais semanalmente, tempo o qual não tinhamos por razões pessoais e não queriamos investir muito tempo no trabalho. Era trabalho demais para um projeto de qualidade média.

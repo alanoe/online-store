@@ -17,7 +17,13 @@ function Header({Login,Admin}){
     setAdmin(Admin);    
   });
 
-  
+  var id ="";
+  if(Admin){
+
+  }else{
+    id = '6101c6014b89d201a10148ff'
+  }
+
   return(
     <div>
       <div className="bar-nav">
@@ -57,7 +63,7 @@ function Header({Login,Admin}){
                   pathname: '/profile',
                   state: {
                     admin: Admin,
-                    id: "6100976e7a7b3da076c0b78d"
+                    id: id
                   }
                }} >
               <i class="fas fa-user"></i></Link>

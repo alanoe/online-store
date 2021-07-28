@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { Link, useLocation} from 'react-router-dom';
+import { Link, useLocation, useHistory} from 'react-router-dom';
 import {Redirect} from 'react-router'
 //import {  } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -11,6 +11,8 @@ import './searchBar.css'
 
 
 const SearchBar = ({Admin, products}) => {
+    let history = useHistory();
+
     const[searchedProduct, setSearchedProduct] = useState("");
 
     const handleChange = search => {
@@ -19,18 +21,31 @@ const SearchBar = ({Admin, products}) => {
 
     const handleSubmit = search => {
         search.preventDefault();
-        alert('A busca foi: ' + searchedProduct);
+        //alert('A busca foi: ' + searchedProduct);
         console.log("search searchBar:"+ searchedProduct);
         console.log("Admin searchBar:"+ Admin)
-
+        
+        
         if(Admin === true) {
             return (
-                <Redirect to="/adminList" search={searchedProduct}/>
+                history.push({
+                    pathname: '/adminList',
+                    state: {
+                      search: searchedProduct,
+                      update: true 
+                    },
+                  })
             );
         }
         else {
             return (
-                <Redirect to={`/?=${searchedProduct}`}/>
+                history.push({
+                    pathname: '/',
+                    state: {
+                      search: searchedProduct,
+                      update: true 
+                    },
+                  })
             );
         }
     }

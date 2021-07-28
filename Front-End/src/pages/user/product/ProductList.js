@@ -9,8 +9,15 @@ import SearchBar from '../../../components/searchBar/SearchBar'
 import Card from '../../../components/card/ProductCard'
 
 
-const ProductList = ({search}) => {  
+const ProductList = (props) => {  
 
+
+  var search;
+  try{
+    search = props.location.state.search;
+  }catch(err){
+
+  }
   const [productList, setProductList] = useState ([]);
 
   const fetchData = async () => {
@@ -30,9 +37,9 @@ const ProductList = ({search}) => {
 
          <div className='product-list'>
          {productList.map(product => {            
-            if(product.name.search(search) != -1)        
+            if(product.name.search(search) != -1){       
               return <Link to={{ pathname: '/product', state: { id: product._id}}}><Card name={product.name} price={product.price} image={product.image} /></Link>
-            
+         }
           })}
          </div>
 

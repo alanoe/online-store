@@ -21,8 +21,27 @@ const Login = () => {
 
 
         alert("usuario: " + email + "\nsenha :" + password);
-
-        history.push('/login');
+        if(email == 'admin' && password == 'admin'){
+            history.push({
+                pathname: '/adminList',
+                state: {
+                  loggedIn: true,
+                  search:'',
+                  admin: true,
+                  update: true 
+                },
+              })
+        }else{
+            history.push({
+                pathname: '/',
+                state: {
+                  loggedIn: true,
+                  search:'',
+                  update: true 
+                },
+              })
+        }
+        
     }
 
     return(
