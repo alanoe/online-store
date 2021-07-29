@@ -22,11 +22,12 @@ const Login = () => {
         var token =  btoa(email+":"+password)
         
         async function send(){
-          return  await api.post('/login',{
+          const res =  await api.post('/login',{
                 headers: {
                     authorization: token
                   }
-            }) 
+            })
+            return res.data 
         };
         const isLogged = send();
 
