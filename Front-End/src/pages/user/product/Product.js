@@ -30,7 +30,7 @@ const Product = (props) => {
         // validate form
         let res;
         async function send(){
-            await api.post('/cart', {productID:id,qnt:qnt,price:product.price,name:product.name} ) 
+            await api.post('/cart/products', {product:id,qnt:qnt,price:product.price,name:product.name} ) 
         };
         send();
         alert("produto adicionado ao carrinho");

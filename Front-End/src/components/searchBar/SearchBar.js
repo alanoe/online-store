@@ -2,12 +2,10 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory} from 'react-router-dom';
 import {Redirect} from 'react-router'
-//import {  } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 import AddProductButton from '../AddProductButton'
 import './searchBar.css'
-/*<Link className="link-cart" to="./cart"><i class="fas fa-shopping-cart"></i></Link>*/ 
-
 
 
 const SearchBar = ({Admin, products}) => {
@@ -22,9 +20,6 @@ const SearchBar = ({Admin, products}) => {
     const handleSubmit = search => {
         //search.preventDefault();
         //alert('A busca foi: ' + searchedProduct);
-        console.log("search searchBar:"+ searchedProduct);
-        console.log("Admin searchBar:"+ Admin)
-        
         
         if(Admin === true) {
             return (

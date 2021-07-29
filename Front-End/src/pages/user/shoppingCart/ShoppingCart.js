@@ -37,9 +37,6 @@ const ShoppingCart = () => {
 
   const totalPrice = valueTotal();
 
-  console.log("ollaaaaa productList:")
-  console.log(productList)
-
   return (
     <div>
       <Header />

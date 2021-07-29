@@ -18,7 +18,7 @@ const Payment = (props) => {
         e.preventDefault()
 
         async function send(){
-            await api.put('/cart');                
+           // await api.put('/cart');                
         };
         async function remove(){
             await api.delete('/cart');                
