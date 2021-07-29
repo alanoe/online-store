@@ -181,21 +181,22 @@ FrontEnd:
 >> npm run build
 >> npm run start
 ```
-BackEnd:
+BackEnd(É necessário ter MongoDB instalado):
 ```
 >> npm i
->> npm run build
->> npm run start
+>> node src/server.js
+
 ```
-Para entrar como usuário basta ir na página de login e clicar em "Login"
-Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
+Para entrar como usuário basta colocar as credenciais de usuário na página de login e clicar em "Login"
+Para entrar como admin basta ir na página de login e colocar admin e admin para senha e usuário.
 
 ## Problemas
-- No carrinho, ao tentar listar os produtos, embora sajam listados apenas uma vez, eles são chamados mais de uma vez, causando o total ser um valor errado. Não soubemos como corrigir, esse erro ocorre até com um array de produtos hardcoded;
 - A imagem do produto não foi implementada;
-- SearchBar não funciona;
+- Embora os métodos de filtragem na página de produtos Funcione, a SearchBar não funciona ao tentar passar parametros dela para a página de produtos;
 - Não foi implementado nada relacionado ao histórico de compras do usuário;
+- As informações na página de perfil são listadas, mas endereço não, devido a forma que o Backend foi implementado (salva uma string ao invés dos campos separados). Não foi testado clicar no botão Editar para ver se salva.
+- Não conseguimos implementar corretamente o autorizar, desse modo, é possível fazer login com qualquer username e password.
 
 ## Comentários
 - Havia Informações relacionadas com a mãe do ovo, mas resolvemos tirar elas.
-- A disciplina cobrava um crédito trabalho, porém, tanto suas atividades e o trabalho demandavam muito mais semanalmente, tempo o qual não tinhamos por razões pessoais e não queriamos investir muito tempo no trabalho. Era trabalho demais para um projeto de qualidade média.
+- Não implementamos o que haviamos proposto inicialmente por razões de tempo.

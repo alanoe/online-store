@@ -19,9 +19,19 @@ const Login = () => {
     
     const onSubmit  =  (e) =>{
 
+        var token =  btoa(email+":"+password)
+        
+        async function send(){
+          const res =  await api.post('/login',{
+                headers: {
+                    authorization: token
+                  }
+            })
+            return res.data 
+        };
+        const isLogged = send();
 
-        alert("usuario: " + email + "\nsenha :" + password);
-        if(email == 'admin' && password == 'admin'){
+        if((email == 'admin' && password == 'admin')){
             history.push({
                 pathname: '/adminList',
                 state: {
@@ -31,12 +41,13 @@ const Login = () => {
                   update: true 
                 },
               })
-        }else{
+        }else if(isLogged){
             history.push({
                 pathname: '/',
                 state: {
                   loggedIn: true,
                   search:'',
+                  admin: false,
                   update: true 
                 },
               })

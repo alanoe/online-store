@@ -20,7 +20,7 @@ const SearchBar = ({Admin, products}) => {
     }
 
     const handleSubmit = search => {
-        search.preventDefault();
+        //search.preventDefault();
         //alert('A busca foi: ' + searchedProduct);
         console.log("search searchBar:"+ searchedProduct);
         console.log("Admin searchBar:"+ Admin)
@@ -56,7 +56,7 @@ const SearchBar = ({Admin, products}) => {
                 
                 <div className="search-bar">
                     <input type="search" value={searchedProduct} onChange={handleChange} className="product-search" />
-                    <button className="search-button" onCLick={handleSubmit} type="submit"><i class="fas fa-search"></i></button>                      
+                    <button className="search-button" onCLick={handleSubmit} ><i class="fas fa-search"></i></button>                      
                 </div>      
                 <AddProductButton Admin={Admin} products={products}/>
                 
