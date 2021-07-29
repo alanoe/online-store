@@ -187,8 +187,8 @@ BackEnd(É necessário ter MongoDB instalado):
 >> node src/server.js
 
 ```
-Para entrar como usuário basta ir na página de login e clicar em "Login"
-Para entrar como admin basta ir na página de login e clicar em "esqueceu sua senha"
+Para entrar como usuário basta colocar as credenciais de usuário na página de login e clicar em "Login"
+Para entrar como admin basta ir na página de login e colocar admin e admin para senha e usuário.
 
 ## Problemas
 - A imagem do produto não foi implementada;
