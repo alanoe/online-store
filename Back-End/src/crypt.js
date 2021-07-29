@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
 
-exports.cryptPassword = function(password, callback) {
+exports.hashPassword = function(password, callback) {
   const salt = bcrypt.genSaltSync(saltRounds);
   return bcrypt.hash(password, salt);
 };

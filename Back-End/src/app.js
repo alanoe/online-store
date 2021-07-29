@@ -8,13 +8,11 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
 // project requires
-const {cryptPassword, comparePassword} = require('./crypt');
 const database = require('./database');
-const Product = require('./models/products');
-const Purchase = require('./models/purchases');
 const Cart = require('./models/cart');
-const {AdminUser,BaseUser,User} = require('./models/users');
-const { findById, findByIdAndUpdate } = require('./models/products');
+const productsController = require('./controllers/products');
+const purchasesController = require('./controllers/purchases');
+const usersController = require('./controllers/users');
 
 // set up application
 const app = express();
@@ -31,11 +29,7 @@ app.use(session({
   store: MongoStore.create({mongoUrl: 'mongodb://localhost/granja'}),
   ttl: 7 * 24 * 60 * 60 // 7 days time-to-live
 }));
-function authorize(username, password) {
-  console.log("oiiiee: " + username)
-  const user = BaseUser.find({email: username});
-  return comparePassword(password, user.email);
-}
+
 
 // create reusable SMTP transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
@@ -55,194 +49,36 @@ let transporter = nodemailer.createTransport({
 // TODO: do not return Mongoose fields to the client
 const router = express.Router();
 router.route('/products')
-  .get(async (request, response) => {
-    products = await Product.find({}, '_id name qnt price').exec();
-    response.status(200).send(products);
-  })
-  .post(async (request, response) => {
-    // IMPROVEMENT: validate body
-    product = await Product.create(request.body);
-    response.status(201).send(product);
-  })
+  .get(productsController.get)
+  .post(productsController.post)
 router.route('/products/:id')
-  .get(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    product = await Product.findById(id, '_id name qnt price description').exec();
-    if (!product) {
-      response.status(404).send()
-    }
-    response.status(200).send(product);
-  })
-  .put(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    
-    update = request.body
-    
-    // IMPROVEMENT: validate body
-    // IMPROVEMENT: return 201 status code if product is created
-    product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt}}, {new: true, upsert: true}).exec();
-    
-    if (!product) {
-      response.status(404).send()
-    }
-    
-    await product.save();
-    
-    
-    /*
-    if (product) {
-      product = request.body;
-      await product.save();
-      resStatusCode = 200;
-    }
-    else {
-      product = await Product.create(request.body);
-      resStatusCode = 201;
-    }
-    */
-    response.status(200).send(product);
-  })
-  .delete(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    try {
-      product = await Product.findByIdAndDelete(id).exec();
-      if (!product) {
-        response.status(404).send();
-      }
-    }
-    catch (error) {
-      response.status(500).send(error);
-    }
-    response.status(200).send(product);
-  })
+  .get(productsController.getById)
+  .put(productsController.put)
+  .delete(productsController.deleteById)
 
 // TODO: allow client to manipulate admin users too
 router.route('/users')
-  .get(async (request, response) => {
-    users = await User.find({}, "_id email name phone").exec();
-    response.status(200).send(users);
-  })
-  .post(async (request, response) => {
-    // IMPROVEMENT: validate body
-    user = request.body;
-    user.password = await cryptPassword(user.password);
-    console.log(`user password is ${user.password}`);
-    await User.create(user);
-    response.status(201).send(user);
-  })
+  .get(usersController.get)
+  .post(usersController.post)
 router.route('/users/:id')
-  .get(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    // IMPROVEMENT: handle Mongoose error and return 404 status code if product does not exist
-    try {
-      user = await User.findById(id, "_id email name address phone creditCards").exec();
-    }
-    catch (error) {
-      response.status(500).send(error);
-    }
-    if (!user) {
-      response.status(404).send()
-      return;
-    }
-    response.status(200).send(user);
-  })
-  .put(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    // IMPROVEMENT: validate body
-    // IMPROVEMENT: return 201 status code if product is created
-    // IMPROVEMENT: handle Mongoose error and return 404 status code if product does not exist
-    user = await User.findByIdAndUpdate(id, request.body, {new: true, upsert: true}).exec();
-    if (!user) {
-      response.status(404).send()
-    }
-    await user.save();
-    response.status(200).send(user);
-  })
-  .delete(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    try {
-      user = await User.findByIdAndDelete(id).exec();
-      if (!user) {
-        response.status(404).send();
-      }
-    }
-    catch (error) {
-      response.status(500).send(error);
-    }
-    response.status(200).send(user);
-  })
+  .get(usersController.getById)
+  .put(usersController.put)
+  .delete(usersController.deleteById)
 
 router.route('/purchases')
-  .get(async (request, response) => {
-    purchases = await Purchase.find().exec();
-    response.status(200).send(purchases);
-  })
-  .post(async (request, response) => {
-    // IMPROVEMENT: validate body
-    purchase = await Purchase.create(request.body);
-    response.status(201).send(purchase);
-  })
+  .get(purchasesController.get)
+  .post(purchasesController.post)
 router.route('/purchases/:id')
-  .get(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    // IMPROVEMENT: handle Mongoose error and return 404 status code if product does not exist
-    try {
-      purchase = await Purchase.findById(id).exec();
-    }
-    catch (error) {
-      response.status(500).send(error);
-    }
-    if (!purchase) {
-      response.status(404).send()
-      return;
-    }
-    response.status(200).send(purchase);
-  })
-  .put(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    // IMPROVEMENT: validate body
-    // IMPROVEMENT: return 201 status code if product is created
-    purchase = await Purchase.findByIdAndUpdate(id, request.body, {new: true, upsert: true}).exec();
-    if (!purchase) {
-      response.status(404).send()
-    }
-    await purchase.save();
-    response.status(200).send(purchase);
-  })
-  .delete(async (request, response) => {
-    const id = mongoose.Types.ObjectId(request.params.id);
-    try {
-      purchase = await Purchase.findByIdAndDelete(id).exec();
-      if (!purchase) {
-        response.status(404).send();
-      }
-    }
-    catch (error) {
-      response.status(500).send(error);
-    }
-    response.status(200).send(purchase);
-  })
+  .get(purchasesController.getById)
+  .post(purchasesController.post)
+  .put(purchasesController.put)
+  .delete(purchasesController.deleteById)
 
 router.route('/login')   // basicAuth({authorizer: authorize})
-  .post(async (request, response) => {
-    // parse login and password from headers
-    const b64auth = (request.headers.authorization || '').split(' ')[1] || ''
-    const strauth = Buffer.from(b64auth, 'base64').toString()
-    const splitIndex = strauth.indexOf(':')
-    const email = strauth.substring(0, splitIndex)
-    const password = strauth.substring(splitIndex + 1)
-    if (authorize(email, password)) {
-      request.session.authenticated = true;
-      response.status(200).send();
-    }
-    else {
-      response.status(401).send();
-    }
-  });
+  .post(usersController.login)
 router.route('/logout')
   .post(async (request, response) => {
-    request.session.authenticated = false;
-    await request.session.save();
+    await request.session.destroy();
     response.status(200).send;
   });
 
@@ -271,6 +107,7 @@ router.route('/resetpw')
 
   });
 
+/*
 router.route('/cart')
   .get(async (request,response) =>{
     cart = await Cart.find({}, '_id name qnt price').exec();
@@ -278,7 +115,6 @@ router.route('/cart')
   })
   .post(async (request, response) => {
     // IMPROVEMENT: validate body
-    console.log(request.body)
     cart = await Cart.create(request.body);
     response.status(201).send(cart);
   })
@@ -286,62 +122,76 @@ router.route('/cart')
     cart = await Cart.deleteMany()
   })
   .put(async (request,response) => {
-    console.log("oiee")
     cart = await Cart.find({}, 'productID name qnt price').exec();
     products = await Product.find({}, '_id name qnt price').exec();
-    
+
     cart.forEach(async cartProduct => {
       products.forEach(async product =>{
         if(cartProduct.productID == product._id){
             if(cartProduct.qnt <= product.qnt){
               product.qnt -= cartProduct.qnt;
               await Product.findByIdAndUpdate(product._id,product).exec()
-            }            
+            }
         }
       })
     })
   })
+*/
 
-/*
+const findCartItem = (cart, productId) => {
+  for (item of cart["items"]) {
+    if (item.product == productId) {
+      return item;
+    }
+  }
+  return -1; //throw new Exception(`product ${productId} not found`);
+}
+
 router.route('/cart')
+  // IMPROVEMENT: consider using a client-side session (e.g. stored in a JWT token) instead of a server-side session
   .get(async (request, response) => {
-    console.log("entrei no cart\n")
-    if (!request.session.cart) {
-      request.session.cart = []
+    if (!("cart" in request.session)) {
+      //request.session.cart = await Cart.create({"items": []})
+      request.session.cart = {"items": []}
       await request.session.save();
     }
-    console.log(request.session.cart)
     response.status(200).send(request.session.cart);
   })
   .delete(async (request, response) => {
-    request.session.cart = {}
-    await request.session.save();
+    if ("cart" in request.session) {
+      delete request.session.cart;
+      await request.session.save();
+    }
     response.status(200).send()
   });
 router.route('/cart/products')
   .get(async (request, response) => {
-    if (!request.session.cart) {
-      request.session.cart = {}
-      await request.session.save();
+    if (!("cart" in request.session)) {
+      response.status(200).send({"items": []});
     }
-    response.status(200).send(cart);
+    response.status(200).send(request.session.cart["items"]);
   })
   .post(async (request, response) => {
-    productId = request.body["id"];
-    console.log(request.body);
-    /*if (productId in request.session.cart) {
-      req.session.cart[productId].qnt += request.body["qnt"];
+    let productId = request.body["product"];
+    if (!("cart" in request.session)) {
+      request.session.cart = {"items": []}
+    }
+    let cart = request.session.cart
+    item = findCartItem(cart, productId)
+    if (item != -1) {
+      item.qnt += request.body["qnt"];
     }
     else {
-      req.session.cart[productId].qnt = request.body["qnt"];
+      // TODO: validate body
+      cart["items"].push(request.body);
     }
-    
+
     await request.session.save();
-    
+
     response.status(201).send(request.session.cart);
   })
   .delete(async (request, response) => {
-    productId = request.body["id"];
+    productId = request.body["product"];
     if (!(productId in req.session.cart)) {
       response.status(404).send();
       return;
@@ -350,7 +200,6 @@ router.route('/cart/products')
     await request.session.save();
     response.status(200).send();
   });
-*/
 
 
 router.route('/purchases/:id')
