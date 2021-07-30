@@ -21,7 +21,7 @@ const Payment = (props) => {
            // await api.put('/cart');                
         };
         async function remove(){
-            await api.delete('/cart');                
+            localStorage.setItem('cart', JSON.stringify([]))              
         };
         send();        
 

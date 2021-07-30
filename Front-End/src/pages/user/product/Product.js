@@ -36,15 +36,15 @@ const Product = (props) => {
             console.log("carrinho antes de adicionar prod: " + JSON.parse(localStorage.getItem('cart')))
             var newProduct = {productId:product._id, name:product.name, qnt:qnt, price:product.price}
             let found = false
-            for (product of products) {
+            for (let product of products) {
                 if (product.productId == newProduct.productId) {
-                    product.qnt += newProduct.qnt;
-                    console.log("produto já existe, adicionando qtd")
+                    product.qnt =  parseInt(product.qnt) + parseInt(newProduct.qnt);
+                    console.log("produto já existe no carrinho, adicionando qtd")
                     found = true
                 }
             }
             if (!found) {
-                console.log("produto novo")
+                console.log("produto novo no carrinho")
                 products.push(newProduct);
             } 
             localStorage.setItem('cart', JSON.stringify(products))//api.put('/cart/products/' + id, {"$inc": {"qnt": qnt}} ) 

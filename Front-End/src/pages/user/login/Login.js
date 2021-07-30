@@ -18,7 +18,7 @@ const Login = () => {
 
     const onSubmit = async (e) =>{
         e.preventDefault();
-        localStorage.setItem('cart',[])
+        localStorage.setItem('cart', JSON.stringify([]))
         console.log("on submit");
         // authenticate using Basic Authentication
         const b64EncodedCredentials =  Buffer.from(email + ':' + password).toString('base64')

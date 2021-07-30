@@ -7,6 +7,7 @@ import './shoppingCart.css';
 import Card from '../../../components/card/CartCard'
 import Header from '../../../components/header/Header';
 import api from './../../../Api'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -14,8 +15,12 @@ import api from './../../../Api'
 
 const ShoppingCart = (props) => {
 
-  const login = props.location.state.login
+  let history = useHistory();
 
+  const login = props.location.state.login
+  if(!login){
+    history.push('/login')
+  }
 
   // React state variables
   const [productList, setProductList] = useState([]);
