@@ -47,14 +47,14 @@ function Header({Login,Admin}){
             <div><Link to='/adminList' Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           ):(
             <div><Link to={{
-              pathname: '/',
-              state: {
-                loggedIn: true,
-                search:'',
-                admin: false,
-                update: true 
-              },
-            }} Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
+                pathname: '/',
+                state: {
+                  loggedIn: true,
+                  search:'',
+                  admin: false,
+                  update: true 
+                },
+              }} Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           )
         }
 

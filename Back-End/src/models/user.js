@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-userOptions = {discriminatoryKey: 'kind'}
+userOptions = {discriminatorKey: 'kind'}
 const BaseUserSchema = new mongoose.Schema(
   {
     email: {type:String, unique: true, required: true},
@@ -18,6 +18,7 @@ const AdminUser = BaseUser.discriminator('AdminUser', AdminUserSchema);
 const CreditCardSchema = new mongoose.Schema({
     number: {type: String, required: true},
     name: {type:String, required: true},
+    expirationDate: {type: Date, required: true},
     verificationCode: {type: String, required: true}
 })
 const UserSchema = new mongoose.Schema(

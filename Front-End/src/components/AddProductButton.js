@@ -8,14 +8,14 @@ const AddProductButton = ({Admin, products,cart,login}) => {
   return (
      <div>          
          {
-           admin == true ? (
+           Admin === true ? (
               <Link className="link-sales" to="./sales" ><i class="fas fa-chart-line"></i></Link>
            ):(
              <></>
            )
          }
          {
-              admin === true ?(
+              Admin === true ?(
                 <Link className="link-cart" to="./addProduct" products={products}><i class="fas fa-plus"></i></Link>
             ):(
                 <Link className="link-cart" to={{ pathname: '/cart', state: { login: login}}}><i class="fas fa-shopping-cart"></i></Link>

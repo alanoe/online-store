@@ -9,7 +9,6 @@ import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
 import Card from '../../../components/card/ProductCard'
 
-import Unicornio from "../../../img/unicornio.jfif";
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 
