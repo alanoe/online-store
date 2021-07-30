@@ -5,8 +5,7 @@ const ProductSchema = new mongoose.Schema({
     qnt: {type: Number, default: 0},
     price: {type: Number, required: true},
     description: String,
-    // TODO: add image
-    //image: {data: Buffer, contentType: String}
+    image: {type: String, required: false}
 });
 const Product = mongoose.model('Product', ProductSchema);
 

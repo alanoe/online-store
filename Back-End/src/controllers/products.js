@@ -21,13 +21,13 @@ exports.deleteById = async (request, response) => {
 }
 
 exports.get = async (request, response) => {
-  const products = await Product.find({}, '_id name qnt price').exec();
+  const products = await Product.find({}, '_id name qnt price image').exec();
   response.status(200).send(products);
 }
 
 exports.getById = async (request, response) => {
   const id = mongoose.Types.ObjectId(request.params.id);
-  const product = await Product.findById(id, '_id name qnt price description').exec();
+  const product = await Product.findById(id, '_id name qnt price image description').exec();
   if (!product) {
     response.status(404).send()
   }
@@ -45,7 +45,7 @@ exports.put = async (request, response) => {
   let update = request.body
   console.log("products:put")
   // IMPROVEMENT: validate body
-  const product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt}}, {new: false}).exec();
+  const product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt, image:image}}, {new: false}).exec();
   if (!product) {
     response.status(404).send()
   }
