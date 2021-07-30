@@ -30,7 +30,7 @@ exports.login = async (request, response) => {
   const user = await authenticate(email, password)
   if (user !== null) {
     request.session.userId = user.id;
-    response.status(200).send({"isAdmin": user.kind === "AdminUser"});
+    response.status(200).send({"userId": user.id, "isAdmin": user.kind === "AdminUser"});
   }
   else {
     response.status(401).send();
