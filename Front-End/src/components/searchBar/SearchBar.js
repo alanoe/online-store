@@ -8,9 +8,9 @@ import AddProductButton from '../AddProductButton'
 import './searchBar.css'
 
 
-const SearchBar = ({Admin, products}) => {
+const SearchBar = ({Admin, products, login}) => {
     let history = useHistory();
-
+    console.log(login)
     const[searchedProduct, setSearchedProduct] = useState("");
 
     const handleChange = search => {
@@ -53,7 +53,7 @@ const SearchBar = ({Admin, products}) => {
                     <input type="search" value={searchedProduct} onChange={handleChange} className="product-search" />
                     <button className="search-button" onCLick={handleSubmit} ><i class="fas fa-search"></i></button>                      
                 </div>      
-                <AddProductButton Admin={Admin} products={products}/>
+                <AddProductButton Admin={Admin} products={products} login={login}/>
                 
             </div>
         </div>

@@ -11,10 +11,11 @@ import Card from '../../../components/card/ProductCard'
 
 const ProductList = (props) => {  
 
-
+  var  loggedIn ;
   var search;
   try{
     search = props.location.state.search;
+    loggedIn = props.location.state.loggedIn
   }catch(err){
 
   }
@@ -32,8 +33,8 @@ const ProductList = (props) => {
 
   return(
         <div>
-          <Header Login={true} Admin={false}/>
-          <SearchBar Admin={false}/>
+          <Header Login={loggedIn} Admin={false}/>
+          <SearchBar Admin={false} login={loggedIn}/>
 
          <div className='product-list'>
          {productList.map(product => {            

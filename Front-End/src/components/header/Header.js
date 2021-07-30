@@ -17,6 +17,7 @@ function Header({Login,Admin}){
     setAdmin(Admin);    
   });
 
+  console.log(login)
   var id ="";
   if(Admin){
 
@@ -30,16 +31,30 @@ function Header({Login,Admin}){
         
         {
           Admin === true ? (
-            <div><Link to='/adminList' Admin={Admin}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+            <div><Link to={{ pathname: '/adminList', state: { Admin: Admin}}}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
           ):(
-            <div><Link to='/' Admin={Admin}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
+            <div><Link to={{ pathname: '/',
+            state: {
+              loggedIn: true,
+              search:'',
+              admin: false,
+              update: true 
+            }}}><img className="logo" src={LogoOvo} alt="logo"/></Link></div>
           )
         }  
         {
           Admin === true ? (
             <div><Link to='/adminList' Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           ):(
-            <div><Link to='/' Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
+            <div><Link to={{
+              pathname: '/',
+              state: {
+                loggedIn: true,
+                search:'',
+                admin: false,
+                update: true 
+              },
+            }} Admin={Admin} ><h1>Granja dos desesperados</h1></Link></div>
           )
         }
 
@@ -48,13 +63,14 @@ function Header({Login,Admin}){
           <ul className="link-list">
             {/* TODO: must show either login or logout depending on if user is logged in  */ }
             {
-              Login === false ? (
+              Login === true ? (
                 <li>
-                  <Link className="link-header" to='/login'>Login</Link>
+                <Link className="link-header" to='/login'>Logout</Link>
                 </li>
+                
               ):(
                 <li>
-                  <Link className="link-header" to='/login'>Logout</Link>
+                  <Link className="link-header" to='/login'>Login</Link>
                 </li>
               )
               }

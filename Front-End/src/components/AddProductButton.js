@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const AddProductButton = ({Admin, products,cart}) => {
+const AddProductButton = ({Admin, products,cart,login}) => {
   const [admin, setAdmin] = useState(Admin);
 
   return (
@@ -18,7 +18,7 @@ const AddProductButton = ({Admin, products,cart}) => {
               admin === true ?(
                 <Link className="link-cart" to="./addProduct" products={products}><i class="fas fa-plus"></i></Link>
             ):(
-                <Link className="link-cart" to="./cart"><i class="fas fa-shopping-cart"></i></Link>
+                <Link className="link-cart" to={{ pathname: '/cart', state: { login: login}}}><i class="fas fa-shopping-cart"></i></Link>
             )
          }
      </div>  

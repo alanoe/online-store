@@ -12,9 +12,11 @@ import { useEffect, useState } from 'react';
 
 
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
 
   const id = new URLSearchParams(useLocation().search).get("id")
+  const login = props.location.state.login
+
 
   const [productList, setProductList] = useState([]);
 
@@ -39,7 +41,7 @@ const ShoppingCart = () => {
 
   return (
     <div>
-      <Header />
+      <Header  Login={login}/>
       <div className="cart-container">
         {
           productList.length != 0 ? (
