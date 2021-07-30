@@ -7,7 +7,7 @@ import './header.css'
 import LogoOvo from "../../img/ovo-branco.png";
 
 
-function Header({Login,Admin}){
+function Header({Login,Admin,id}){
   
   const [login, setLogin] = useState();
   const [admin, setAdmin] = useState();
@@ -18,12 +18,7 @@ function Header({Login,Admin}){
   });
 
   console.log(login)
-  var id ="";
-  if(Admin){
-
-  }else{
-    id = '6101c6014b89d201a10148ff'
-  }
+  
 
   return(
     <div>
@@ -79,7 +74,8 @@ function Header({Login,Admin}){
                   pathname: '/profile',
                   state: {
                     admin: Admin,
-                    id: id
+                    id: id,
+                    login: Login
                   }
                }} >
               <i class="fas fa-user"></i></Link>

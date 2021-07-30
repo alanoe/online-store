@@ -15,9 +15,11 @@ const ProductList = (props) => {
 
   var  loggedIn ;
   var search;
+  var id;
   try{
     search = props.location.state.search;
     loggedIn = props.location.state.loggedIn
+    id = props.location.state.id
   }catch(err){
 
   }
@@ -35,13 +37,13 @@ const ProductList = (props) => {
 
   return(
         <div>
-          <Header Login={loggedIn} Admin={false}/>
+          <Header Login={loggedIn} Admin={false} id={id}/>
           <SearchBar Admin={false} login={loggedIn}/>
 
          <div className='product-list'>
          {productList.map(product => {            
             if (product.name.search(search) !== -1){       
-              return <Link to={{ pathname: '/product', state: { id: product._id}}}>
+              return <Link to={{ pathname: '/product', state: { id: product._id, login: loggedIn, profileId:id}}}>
                   <Card name={product.name} price={product.price} image={product.image} />
               </Link>
          }

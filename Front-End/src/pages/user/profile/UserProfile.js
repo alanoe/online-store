@@ -12,7 +12,13 @@ const UserProfile = (props) => {
     let history = useHistory();
 
     let isAdmin = props.location.state.admin;
+    let id = props.location.state.id;
+    let login = props.location.state.login
     //const id = props.location.state.id;
+
+    if(!login){
+        history.push('/login')
+      }
 
     const[email, setEmail] = useState();
     const[name, setName] = useState();
@@ -26,18 +32,20 @@ const UserProfile = (props) => {
     
 
     const fetchProfile = async () => {
-        const profile = await api.get('/users/current').data;
+        const profile = await api.get('/users/' + id);
+        console.log(id)
+        console.log(profile.data)      
         
-        setName(profile.name);
-        setEmail(profile.email);
+        setName(profile.data.name);
+        setEmail(profile.data.email);
         // IMPROVEMENT: receive address as an object instead of a string with values separated by $
-        const addressParts = profile.address.split("$");
+        const addressParts = profile.data.address.split("$");
         setCEP(addressParts[0]);
         setStreet(addressParts[1]);
         setHouseNumber(addressParts[2]);
         setCity(addressParts[3]);
         setState(addressParts[4]);
-        setPhone(profile.phone);
+        setPhone(profile.data.phone);
         
     }
     
@@ -68,7 +76,7 @@ const UserProfile = (props) => {
 
     return (
         <div>
-            <Header Admin={isAdmin} />
+            <Header Admin={isAdmin} Login={login}/>
             <div className="profile-container">
                 <div className="info-edit">
                     <h1>Informações pessoais</h1>

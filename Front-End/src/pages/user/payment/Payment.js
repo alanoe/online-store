@@ -10,6 +10,7 @@ import api from './../../../Api'
 const Payment = (props) => {
 
     const price = props.location.state.price
+    const id = props.location.state.id
 
     let history = useHistory();
 
@@ -32,7 +33,7 @@ const Payment = (props) => {
 
     return(
         <div>
-            <Header />
+            <Header id={id}/>
             
             <div className="pay-container">
 

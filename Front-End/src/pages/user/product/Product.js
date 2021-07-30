@@ -12,6 +12,8 @@ const Product = (props) => {
     let history = useHistory();
 
     const id = props.location.state.id
+    const login = props.location.state.login
+    const profileId = props.location.state.profileId
     console.log("id do produto: " + id)
     /*const id = new URLSearchParams(useLocation().search).get("id")*/
     const [product, setProduct] = useState({});
@@ -59,8 +61,8 @@ const Product = (props) => {
     
     return(
         <div>
-            <Header />
-            <SearchBar />
+            <Header Login={login} id={profileId}/>
+            <SearchBar login={login} id={profileId}/>
             <div className="overall">
             <div className="product">
                 <div className="picture">

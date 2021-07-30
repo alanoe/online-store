@@ -18,6 +18,7 @@ const ShoppingCart = (props) => {
   let history = useHistory();
 
   const login = props.location.state.login
+  const id = props.location.state.profileId
   if(!login){
     history.push('/login')
   }
@@ -60,7 +61,7 @@ const ShoppingCart = (props) => {
 
   return (
     <div>
-      <Header  Login={login}/>
+      <Header  Login={login} id={id}/>
       <div className="cart-container">
         {
           productList.length !== 0 ? (
@@ -78,7 +79,7 @@ const ShoppingCart = (props) => {
               <div className="purchased">
                 <h3>Valor total: R$ {getSalePrice().toFixed(2)}</h3>
                 {/** Como não tem o backend, colocar para ir direto para a página de pagamento */}
-                <Link to={{ pathname: '/pay', state: { price: getSalePrice()}}}><input className="purchase-submit" type="submit" value="Comprar" /></Link>
+                <Link to={{ pathname: '/pay', state: { price: getSalePrice(), id:id}}}><input className="purchase-submit" type="submit" value="Comprar" /></Link>
               </div>
             </>
           ) :

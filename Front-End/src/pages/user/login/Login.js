@@ -45,6 +45,7 @@ const Login = () => {
                 loggedIn: true,
                 search:'',
                 admin: isAdmin,
+                id: "6104638e14c89400ab51cccd",
                 update: true
             },
         })
