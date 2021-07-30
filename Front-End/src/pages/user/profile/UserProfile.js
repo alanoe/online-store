@@ -1,84 +1,73 @@
+// 3rd party imports
 import React,{useEffect, useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
 
 // our imports
 import './userProfile.css';
 import api from './../../../Api'
 import Header from '../../../components/header/Header';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-//import { set } from 'mongoose';
 
 
 const UserProfile = (props) => {
     let history = useHistory();
 
-    let Admin = props.location.state.admin;
+    let isAdmin = props.location.state.admin;
+    //const id = props.location.state.id;
 
-    const id = props.location.state.id;
-
-    const[address, setAddress] = useState();
-    const[name, setName] = useState();
     const[email, setEmail] = useState();
+    const[name, setName] = useState();
+    const[phone, setPhone] = useState();
+    // address
     const[CEP, setCEP] = useState();
     const[street, setStreet] = useState();
     const[houseNumber, setHouseNumber] = useState();
     const[city, setCity] = useState();
     const[state, setState] = useState();
-    const[phone, setPhone] = useState();
     
 
-    const fetchData = async () => {
-        const response = await api.get('/users/' + id);
-        setName(response.data.name);
-        setEmail(response.data.email);
-        setAddress(response.data.address);
-        setPhone(response.data.phone);
+    const fetchProfile = async () => {
+        const profile = await api.get('/users/current').data;
+        setName(profile.name);
+        setEmail(profile.email);
+        // IMPROVEMENT: receive address as an object instead of a string with values separated by $
+        const addressParts = profile.address.split("$");
+        setCEP(addressParts[0]);
+        setStreet(addressParts[1]);
+        setHouseNumber(addressParts[2]);
+        setCity(addressParts[3]);
+        setState(addressParts[4]);
+        setPhone(profile.phone);
         
     }
     
     useEffect(() => {
-        fetchData();
+        fetchProfile();
     }, []);
 
     
-    //
-    /*
-    var addressParts = '' + address;
-    addressParts = addressParts.split("$")[0]
-    setCEP(addressParts.split("$")[0]);
-    setStreet(addressParts[1]);
-    setHouseNumber(addressParts[2]);
-    setCity(addressParts[3]);
-    setState(addressParts[4])
-    */
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
 
         e.preventDefault()
 
-        console.log("oiieeee")
+        // update the profile
+        let newProfile = e.target;
         const user = {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            address: e.target.CEP.value +"$"+ e.target.street.value +"$"+ e.target.houseNumber.value +"$"+ e.target.city.value +"$"+ e.target.state.value,
-            phone:e.target.phone.value
+            name: newProfile.name.value,
+            email: newProfile.email.value,
+            // IMPROVEMENT: send address as an object instead of a string with values separated by $
+            address: newProfile.CEP.value +"$"+ newProfile.street.value +"$"+ newProfile.houseNumber.value +"$"+ newProfile.city.value +"$"+ newProfile.state.value,
+            phone:newProfile.phone.value
         }
+        await api.put('/users/current', user ) 
 
-        console.log(user);
-        // validate form
-        async function send(){
-            //await api.put('/users/' + id, user ) 
-        };
-        send();
-        alert("produto alterado");
-
-
-        history.push('/adminList');
+        // redirect to home
+        history.push('/');
       }
     
 
     return (
         <div>
-            <Header Admin={Admin} />
+            <Header Admin={isAdmin} />
             <div className="profile-container">
                 <div className="info-edit">
                     <h1>Informações pessoais</h1>
@@ -93,17 +82,17 @@ const UserProfile = (props) => {
                         <label for="user-email">Email </label>
                         <input className="user-email" type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
-                        {!Admin && (
+                        {!isAdmin && (
                             <>
                                 <label for="user-cep">CEP </label>
                                 <input className="user-cep" type="text" id="CEP" value={CEP} onChange={(e) => setCEP(e.target.value)}/>
 
                                 <label for="user-street">Rua </label>
-                                <input className="user-forms-element" id="street" className="user-street" type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
+                                <input className="user-forms-element user-street" id="street" type="text" value={street} onChange={(e) => setStreet(e.target.value)}/>
                                 <label for="user-house-number">Número </label>
-                                <input className="user-forms-element"  id="houseNumber" className="user-house-number" type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
+                                <input className="user-forms-element user-house-number" id="houseNumber" type="text" value={houseNumber} onChange={(e) => setHouseNumber(e.target.value)}/>
                                 <label for="user-city">Cidade</label>
-                                <input className="user-forms-element" id="city" className="user-city" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
+                                <input className="user-forms-element user-city" id="city" type="text" value={city} onChange={(e) => setCity(e.target.value)}/>
                             </>
                         )}
 

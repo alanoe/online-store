@@ -2,11 +2,11 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
 
-exports.hashPassword = function(password, callback) {
+exports.hashPassword = (password, callback) => {
   const salt = bcrypt.genSaltSync(saltRounds);
   return bcrypt.hash(password, salt);
 };
 
-exports.comparePassword = function(plainTextPassword, hashedPassword, callback) {
-   return bcrypt.compare(plainTextPassword, hashedPassword)
+exports.comparePassword = (plainTextPassword, hashedPassword, callback) => {
+   return bcrypt.compare(plainTextPassword, hashedPassword);
 };

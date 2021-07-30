@@ -5,7 +5,6 @@ import './sales.css';
 import Header from '../../../components/header/Header';
 
 import Unicornio from "../../../img/unicornio.jfif";
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 var productList = [
   {name: 'Ovo de unicornio da angola', value: 4200.00, qtd:25, image: Unicornio},

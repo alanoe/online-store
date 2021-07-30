@@ -1,5 +1,9 @@
+'use strict'
+
+const mongoose = require('mongoose');
+
 //const { findById, findByIdAndUpdate } = require('./models/products');
-const Product = require('../models/products');
+const Product = require('../models/product');
 
 
 exports.deleteById = async (request, response) => {
@@ -17,13 +21,13 @@ exports.deleteById = async (request, response) => {
 }
 
 exports.get = async (request, response) => {
-  products = await Product.find({}, '_id name qnt price').exec();
+  const products = await Product.find({}, '_id name qnt price').exec();
   response.status(200).send(products);
 }
 
 exports.getById = async (request, response) => {
   const id = mongoose.Types.ObjectId(request.params.id);
-  product = await Product.findById(id, '_id name qnt price description').exec();
+  const product = await Product.findById(id, '_id name qnt price description').exec();
   if (!product) {
     response.status(404).send()
   }
@@ -32,17 +36,16 @@ exports.getById = async (request, response) => {
 
 exports.post = async (request, response) => {
   // IMPROVEMENT: validate body
-  product = await Product.create(request.body);
+  const product = await Product.create(request.body);
   response.status(201).send(product);
 }
 
 exports.put = async (request, response) => {
   const id = mongoose.Types.ObjectId(request.params.id);
-
-  update = request.body
-
+  let update = request.body
+  console.log("products:put")
   // IMPROVEMENT: validate body
-  product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt}}, {new: true}).exec();
+  const product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt}}, {new: false}).exec();
   if (!product) {
     response.status(404).send()
   }

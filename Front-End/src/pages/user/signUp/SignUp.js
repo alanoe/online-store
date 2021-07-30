@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 // our imports
 import './signUp.css';
@@ -11,23 +11,31 @@ const SignUp = () => {
 
     let history = useHistory();
 
-    const[name, setName] = useState();
     const[email, setEmail] = useState();
-    const[CEP, setCEP] = useState();
+    const[name, setName] = useState();
+    const[password, setPassword] = useState();
+    const[phone, setPhone] = useState();
+    // address
     const[street, setStreet] = useState();
     const[houseNumber, setHouseNumber] = useState();
     const[city, setCity] = useState();
     const[state, setState] = useState();
-    const[phone, setPhone] = useState();
-    const[password, setPassword] = useState();
+    const[CEP, setCEP] = useState();
 
-    const onSubmit  =  (e) =>{
+    const onSubmit  = async (e) =>{
         
-        var address = CEP + "$" +street + "$"+ houseNumber + "$"+ city + "$"+ state
-        var usuario = {name:name,email:email,address:address,phone:phone,password:password}
-
-        async function send(){await api.post('/users', usuario) };
-        send();
+        // IMPROVEMENT: send address as an object instead of a string with values separated by $
+        const address = CEP + "$" +street + "$"+ houseNumber + "$"+ city + "$"+ state
+        const usuario = {
+            name:name,
+            email:email,
+            address:address,
+            phone:phone,
+            password:password
+        }
+        await api.post('/users', usuario);
+        //async function send(){await api.post('/users', usuario) };
+        //send();
 
         alert("Usuário criado com sucesso" + password)
 

@@ -1,5 +1,5 @@
 import React ,{useState, useEffect}from 'react';
-import { Link, useLocation} from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 
 // our imports
 import './adminProfile.css';
@@ -12,13 +12,13 @@ const AdminProfile = () => {
     const id = new URLSearchParams(useLocation().search).get("id")
 
     const [usuario, setUsuario] = useState({});
-
-    const fetchData = async () => {
+  
+    useEffect(() => {
+      const fetchData = async () => {
         const response = await api.get('/Admin/' + id);
         setUsuario(response.data);
-    }
-    useEffect(() => {
-        fetchData();
+      }
+      fetchData();
     }, []);
 
 
@@ -44,11 +44,11 @@ const AdminProfile = () => {
                         
                         
                         <label for="user-street">Rua </label>
-                        <input className="user-forms-element" className="user-street" type="text" disabled />
+                        <input className="user-forms-element user-street" type="text" disabled />
                         <label for="user-house-number">Número </label>
-                        <input className="user-forms-element" className="user-house-number" type="text" disabled />
+                        <input className="user-forms-element user-house-number" type="text" disabled />
                         <label for="user-city">Cidade</label>
-                        <input className="user-forms-element" className="user-city" type="text" disabled />
+                        <input className="user-forms-element user-city" type="text" disabled />
                         
 
                         <label>Estado</label>

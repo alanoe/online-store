@@ -1,44 +1,48 @@
+// 3rd party imports
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Link, Redirect, useLocation} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 // our imports
 import './productList.css';
 import api from './../../../Api'
+import Card from '../../../components/card/ProductCard'
 import Header from '../../../components/header/Header';
 import SearchBar from '../../../components/searchBar/SearchBar'
-import Card from '../../../components/card/ProductCard'
 
 
 const ProductList = (props) => {  
 
 
-  var search;
+  let search;
   try{
     search = props.location.state.search;
-  }catch(err){
-
+  } catch(err){
+    // TODO: empty catch blocks are evil, either do sth or remove the try-catch block
   }
   const [productList, setProductList] = useState ([]);
 
-  const fetchData = async () => {
+  // on component render, load products from server
+  const fetchProducts = async () => {
       const response = await api.get('/products');
       setProductList(response.data);
-      console.log(response.data)
   }
   useEffect (() => {
-      fetchData();
+    fetchProducts();
   }, []);
 
 
   return(
         <div>
-          <Header Login={true} Admin={false}/>
+          <Header initialLoggedIn={true} initialAdmin={false}/>
           <SearchBar Admin={false}/>
 
          <div className='product-list'>
          {productList.map(product => {            
-            if(product.name.search(search) != -1){       
-              return <Link to={{ pathname: '/product', state: { id: product._id}}}><Card name={product.name} price={product.price} image={product.image} /></Link>
+            if (product.name.search(search) !== -1){       
+              return <Link to={{ pathname: '/product', state: { id: product._id}}}>
+                  <Card name={product.name} price={product.price} image={product.image} />
+              </Link>
          }
           })}
          </div>
