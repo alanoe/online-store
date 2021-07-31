@@ -15,6 +15,7 @@ const AddProductForm = ({onAddReq}) => {
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
   const [qnt, setQnt] = useState()
+  const [img,setImg] =  useState()
 
   const onSubmit = async (e) => {
     // prevent page change
@@ -33,7 +34,8 @@ const AddProductForm = ({onAddReq}) => {
       name:name, 
       description:description, 
       price:price, 
-      qnt:qnt
+      qnt:qnt,
+      image:img
     };
     console.log(product.price)
     await api.post('/products', product);
@@ -73,7 +75,7 @@ const AddProductForm = ({onAddReq}) => {
             </div>
             <div className='form-field'>
               <label>Imagem</label>
-              <input type='file' name='image' ></input>
+              <input type='text' name='img' value={img} required onChange={(e) => setImg(e.target.value)}></input>
             </div>
 
             <input type='submit' value='Salvar' className='btn' />

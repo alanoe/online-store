@@ -45,7 +45,7 @@ exports.put = async (request, response) => {
   let update = request.body
   console.log("products:put")
   // IMPROVEMENT: validate body
-  const product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt, image:image}}, {new: false}).exec();
+  const product = await Product.findByIdAndUpdate(id, {$set: {name: update.name, description: update.description, price: update.price, qnt: update.qnt, image:update.image}}, {new: false}).exec();
   if (!product) {
     response.status(404).send()
   }

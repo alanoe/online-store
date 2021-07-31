@@ -19,9 +19,9 @@ const ShoppingCart = (props) => {
 
   const login = props.location.state.login
   const id = props.location.state.profileId
-  if(!login){
+  /*if(!login){
     history.push('/login')
-  }
+  }*/
 
   // React state variables
   const [productList, setProductList] = useState([]);

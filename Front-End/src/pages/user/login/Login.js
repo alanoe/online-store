@@ -30,14 +30,14 @@ const Login = () => {
                     authorization: 'Basic ' + b64EncodedCredentials
                 }
             })
-            isAdmin = resp.isAdmin;
+            isAdmin = resp.data.isAdmin;
         }     
         catch (e) {
             // TODO: only show this message is status code is 401
             setMessage("Usuário inexistente ou senha incorreta")
             return;
         }
-        console.log("authentication result: " + isAdmin);
+        console.log("authentication result: " + JSON.stringify(resp));
 
         history.push({
             pathname: isAdmin ? '/adminList' : '/',
